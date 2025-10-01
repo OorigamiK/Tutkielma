@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}  % amssymb for \mathbb, amsthm for lemma
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+	
+	
+	\begin{lemma}
+		Let $f:\mathbb{R}\to\mathbb{R}$ be a convex, twice differentiable function such that $f'(x) \ge 0$. Let $g:\mathbb{R}\to\mathbb{R}$ satisfy
+		\[
+		f(g(x)) \sim x
+		\]
+		Then
+		\[
+		g(x) \sim f^{-1}(x)
+		\]
+	\end{lemma}
+	
+	\begin{proof}
+		From $f(g(x))\sim x$ follows
+		\[
+		f(g(x))=x+o(x)
+		\]
+		Taking inverse of $f$
+		\[
+		g(x)=f^{-1}(x+o(x))
+		\]
+		Since $f$ is convex and monotonic, we get
+		\[
+		\begin{split}
+		f^{-1}((1+\epsilon)x)&\le(1+\epsilon)f^{-1}(x) \\
+		f^{-1}((1-\epsilon)x)&\ge(1-\epsilon)f^{-1}(x)
+		\end{split}
+		\]
+		Hence, 
+		\[
+		g(x)=f^{-1}(x+o(x))=(1+o(1))f^{-1}(x)\sim f^{-1}(x)
+		\]
+	\end{proof}
+	
+\end{document}
