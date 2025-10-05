@@ -41,4 +41,34 @@
 		\]
 	\end{proof}
 	
+	\begin{lemma}
+		Let $f$ be rapidly varying function. Fix $\epsilon>0$, then for sufficiently large $n$
+		\[
+		\sum_{i=1}^{n} f(i)<\sum_{i=n+1}^{n(1+\epsilon)} f(i)
+		\]
+	\end{lemma}
+	
+	\begin{proof}
+		We will prove that the ratio tends to infinity. We examine the left-hand side
+		\[
+		\sum_{i=1}^{n}f(i)<nf(n)
+		\]
+		On the right-hand side
+		\[
+		\sum_{i=n+1}^{n(1+\epsilon)}f(i)>n\frac{\epsilon}{2} f(n(1+\frac{\epsilon}{2}))
+		\]
+		Inspecting the ratio
+		\[
+		\frac{\sum_{i=n+1}^{n(1+\epsilon)} f(i)}{\sum_{i=1}^{n} f(i)}>\frac{n\frac{\epsilon}{2} f(n(1+\frac{\epsilon}{2}))}{nf(n)}>\frac{\epsilon}{2}\frac{f(n(1+\frac{\epsilon}{2}))}{f(n)}
+		\]
+		Since $f$ is rapidly varying function
+		\[
+		\lim_{n\rightarrow \infty} \frac{f(n(1+\frac{\epsilon}{2}))}{f(n)}=\infty
+		\]
+		So there exits $N$ such that
+		\[
+		\frac{f(n(1+\frac{\epsilon}{2}))}{f(n)}>\frac{2}{\epsilon}, n>N
+		\]
+	\end{proof}
+	
 \end{document}
