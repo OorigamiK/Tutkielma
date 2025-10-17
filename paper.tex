@@ -1,10 +1,11 @@
 \documentclass{article}
-\usepackage{amsmath, amssymb, amsthm}  % amssymb for \mathbb, amsthm for lemma
+\usepackage{amsmath, amssymb, amsthm, url, hyperref}  % amssymb for \mathbb, amsthm for lemma
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{cleveref}
 
-\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}{lemma}
+\newtheorem{theorem}{theorem}
 
 \begin{document}
 	
@@ -120,7 +121,7 @@
 		\[
 		\sum_{k=1}^{n} f^{-1}(\frac{x}{k}))\sim C(\alpha)n^2
 		\]
-		Where $C(\alpha)=\frac{\alpha}{(\alpha-1)(1+\alpha)^{\frac{1}{\alpha}}}$
+		Where $C(\alpha)=\frac{\alpha}{(\alpha-1)(\alpha+1)^{\frac{1}{\alpha}}}$
 	\end{lemma}
 	
 	\begin{proof}
@@ -181,7 +182,7 @@
 			\frac{x^{\frac{1}{\alpha}}}{L^{\frac{1}{\alpha}}((\frac{x}{n})^{\frac{1}{\alpha}})}
 			n^{1-\frac{1}{\alpha}}
 		\end{equation}
-		From lemma \ref{lem:sumfAsymp}
+		From lemma \autoref{lem:sumfAsymp}
 		\begin{equation}\label{eq:xReln}
 			x\sim\frac{1}{1+\alpha}L(n)n^{\alpha+1}
 		\end{equation}
@@ -207,17 +208,20 @@
 		\[
 		\sum_{k=1}^{n} f^{-1}(\frac{x}{k})
 		\sim
-		\frac{\alpha}{(\alpha-1)(1+\alpha)^{\frac{1}{\alpha}}}
+		\frac{\alpha}{(\alpha-1)(\alpha+1)^{\frac{1}{\alpha}}}
 		n^{2}
 		\]
 	\end{proof}
 
 	\begin{lemma}\label{lem:nSquaredIsLittle-o-sumInvF-case-a=1}
-		Same as \ref{lem:nSquaredIsLittle-o-sumInvF-case-a>1}, but $\alpha=1$.
+		Same assumptions as \autoref{lem:nSquaredIsLittle-o-sumInvF-case-a>1}, but $\alpha=1$ then 
+		\[
+		n^2=o(\sum_{k=1}^{n} f^{-1}(\frac{x}{k}))
+		\]
 	\end{lemma}
 	
 	\begin{proof}
-		From proof of \ref{lem:nSquaredIsLittle-o-sumInvF-case-a>1} we get
+		From proof of \autoref{lem:nSquaredIsLittle-o-sumInvF-case-a>1} we get
 		\[
 		\sum_{k=1}^{n} f^{-1}(\frac{x}{k})
 		\sim 
@@ -225,8 +229,185 @@
 		\sim
 		\frac{x}{L(x)}\log(n)
 		\]
-		Since $\frac{x}{L(x)}\gtrsim n^2$, the lemma follows.
+		Using \autoref{lem:sumfAsymp} we get
+		\[
+		\sim
+		n^2log(n)
+		\]
+		The claim follows.
 	\end{proof}
+	
+	\begin{lemma}
+		Let $\epsilon>0$ and $i$ such that $n\epsilon\le i$. Given $k,l\ge\epsilon, k-l\ge\epsilon$ and eventually monotonic $f\in RV_\alpha$
+		\[
+		\sum_{j=nl}^{nk} f(j)\sim \frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})
+		\]
+	\end{lemma}
+		
+	\begin{proof}
+		We will first prove that $k<l+C(\epsilon)$.
+		\[
+		\sum_{j=ln}^{kn} f(j)<n(k-l)f(kn)<n\epsilon f(kn)
+		\]
+		Using the sums asymptotic from \autoref{lem:sumfAsymp}
+		\begin{align}
+		1&\le\liminf\frac{n\epsilon f(kn)}{\frac{L(n)}{\alpha+1}n^{\alpha+1}}\notag\\
+		1&\le\liminf\frac{(\alpha+1)\epsilon L(nk)k^\alpha}{L(n)}\notag\\
+		1&\le\liminf(\alpha+1)\epsilon k^\alpha\notag\notag
+		\end{align}
+		Follows $k\le l+(\frac{1}{(\alpha+1)\epsilon})^{\frac{1}{\alpha}}$. Now since $l,k$ are in some compact interval independent of $n$, we can use uniform convergence theorem to get
+		\begin{align}
+			\sum_{j=nl}^{nk}f(j)&\sim \sum_{j=nl}^{nk}L(j)j^\alpha\notag\\
+			&\sim \sum_{j=nl}^{nk} L(n)j^\alpha\notag\\
+			&\sim \frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})
+		\end{align}	
+	\end{proof}
+
+	
+	\begin{theorem}
+		Let $f\in RV_\alpha, \alpha>1$, then $S(x)\sim C(\alpha)n^2$. Where 
+		\[
+		\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
+		\] 
+		and $C(\alpha)=\frac{1}{2(\alpha+1)}
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}$
+	\end{theorem}
+	
+	\begin{proof}
+		Let $l\ge\epsilon$. Define $x$ such that 
+		\[
+		\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
+		\]
+		Define $k$ such that
+		\[
+		\sum_{nl}^{nk} f(i)<x<\sum_{nl}^{nk+1} f(i)
+		\]
+		From \autoref{lem:sumfAsymp} and the fact that $\frac{k}{l}\in[1, \frac{1}{\epsilon}]$ we get using uniform convergence of $\frac{L(\lambda x)}{L(x)}\to1$ in compact sets
+		\[
+		\sum_{nl}^{nk} f(i)\sim \frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})
+		\] 
+		On other hand we know that
+		\[
+		x\sim \frac{L(n)}{1+\alpha}n^{\alpha+1}
+		\]
+		Combining these
+		\[
+		\frac{L(n)}{1+\alpha}n^{\alpha+1}\sim\frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})
+		\]
+		Follows
+		\[
+		k^{\alpha+1}-l^{\alpha+1}=1
+		\]
+		Solving for $k$
+		\[
+		k=(1+l^{\alpha+1})^{\frac{1}{\alpha+1}}
+		\]
+		Finally we get
+		\begin{equation}\label{n(k-l) Asymp}
+			k-l=(1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l
+		\end{equation}
+		Let $\phi(t)=(1+t^{\alpha+1})^{\frac{1}{\alpha+1}}-t$.
+		Now we would like to count the $s_i(x)$. Calculating $s_i(x)$ asymptotic 
+		Let $l$ be such that $i=n\phi(l)$. Solving for $nl$ we get
+		\[
+		nl=n\phi^{-1}(\frac{i}{n})
+		\]
+		So 
+		\[
+		s_i(x)= nl=n\phi^{-1}(\frac{i}{n})
+		\]
+		We can now count $S(x)$ asymptotic.
+		\[
+		S(x)=\sum_{i=1}^{n} s_i(x)
+		\]
+		The head doesn't affect the asymptotic
+		%using the upperbound from upperbound lemma ti clearly follows%
+		\[
+		S(x)\sim\sum_{i=n\epsilon}^{n} s_i(x)
+		\]
+		Using $s_i$ formula
+		\[
+		S(x)\sim \sum_{i=n\epsilon}^{n} n\phi^{-1}(\frac{i}{n})
+		\]
+		Since $\phi$ is monotonic we have
+		\[
+		S(x)\sim n\int_{n\epsilon}^{n}\phi^{-1}(\frac{t}{n})dt
+		\]
+		Doing change of variables to $t\to un$ we get
+		\[
+		S(x)\sim n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt
+		\]
+		Since $\phi:(0,\infty)\to(0,1)$ is strictly decreasing bijection %give details \phi and its properties. 
+		\[
+		\int_{\epsilon}^{1} \phi^{-1}(t)dt\sim\int_{0}^{\infty} \phi(t)dt
+		\]
+		We get
+		\[
+		S(x)\sim n^2\int_{0}^{\infty} \phi(t)dt
+		\]
+		Calculating the integral
+		\[
+			\int_{0}^{\infty} (1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-xdx
+		\]
+		Doing change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$. We get
+		\[
+		dx=\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt
+		\]
+		Changing $\phi(x)$ to $t$ terms \\
+		\begin{align}
+		\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x \notag \\
+		&=(\frac{1}{1-t})^{\frac{1}{\alpha+1}}-(\frac{t}{1-t})^{\frac{1}{\alpha+1}} \notag	\\
+		&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})\notag
+		\end{align}
+		Putting it together
+		\begin{align}
+		\int_{0}^{\infty} \phi(t)dt&=\int_{0}^{1} (1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})
+		\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\notag\\
+		&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
+		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\notag\\
+		&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}
+		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+		&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
+		&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
+		&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\big(B(\frac{1}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})-
+		B(\frac{2}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})\big)\notag
+		\end{align}
+		Where $B$ is the analytically extended beta function(see NIST DLMF § 5.12 \cite{NIST:DLMF})
+		\[
+		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
+		\]
+		Using gamma expression for beta functions we get
+		\begin{align}
+		\int_{0}^{\infty} \phi(t)dt&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
+		-
+		\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
+		)\notag\\
+		&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+		-
+		\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}
+		)\notag
+		\end{align}
+		Using $\Gamma(t)\sim\frac{1}{t}, t\to 0$ %needs source
+		\[
+		\lim_{\epsilon\to 0^+}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}=0	
+		\]
+		So the expression simplifies to
+		\begin{align}
+			\int_{0}^{\infty} \phi(t)dt&=\frac{1}{\alpha+1}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+			\notag\\
+			&=\frac{1}{2(\alpha+1)}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+			\notag\\
+			&=C(\alpha)\notag
+		\end{align}
+		Where second equality follows from $\Gamma(z+1)= z\Gamma(z)$.
+		
+		
+	\end{proof}
+
 	
 	
 	
