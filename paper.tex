@@ -245,21 +245,24 @@
 	\end{lemma}
 		
 	\begin{proof}
-		We will first prove that $k<l+C(\epsilon)$.
+		We will first prove that $l$ is bounded above.
 		\[
-		\sum_{j=ln}^{kn} f(j)<n(k-l)f(kn)<n\epsilon f(kn)
+		\sum_{j=ln}^{kn} f(j)>n(k-l)f(ln)\ge n\epsilon f(ln)
 		\]
 		Using the sums asymptotic from \autoref{lem:sumfAsymp}
 		\begin{align}
-		1&\le\liminf\frac{n\epsilon f(kn)}{\frac{L(n)}{\alpha+1}n^{\alpha+1}}\notag\\
-		1&\le\liminf\frac{(\alpha+1)\epsilon L(nk)k^\alpha}{L(n)}\notag\\
-		1&\le\liminf(\alpha+1)\epsilon k^\alpha\notag\notag
+		1&\ge\liminf\frac{n\epsilon f(ln)}{\frac{L(n)}{\alpha+1}n^{\alpha+1}}\notag\\
+		1&\ge\liminf\frac{(\alpha+1)\epsilon L(nl)l^\alpha}{L(n)}\notag\\
 		\end{align}
-		Follows $k\le l+(\frac{1}{(\alpha+1)\epsilon})^{\frac{1}{\alpha}}$. Now since $l,k$ are in some compact interval independent of $n$, we can use uniform convergence theorem to get
+		Using Potter's theorem (see 1.5.6 \cite{bingham1987regular})
+		\begin{align}
+			1\ge \liminf 2(\alpha+1)\epsilon l^{\alpha+1}\notag
+		\end{align}
+		Follows $l\le (\frac{1}{(\alpha+1)\epsilon})^{\frac{1}{\alpha+1}}$. Clearly $k\le l+1$. Now since $l,k$ are in some compact interval independent of $n$, we can use uniform convergence theorem to get
 		\begin{align}
 			\sum_{j=nl}^{nk}f(j)&\sim \sum_{j=nl}^{nk}L(j)j^\alpha\notag\\
 			&\sim \sum_{j=nl}^{nk} L(n)j^\alpha\notag\\
-			&\sim \frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})
+			&\sim \frac{L(n)}{\alpha+1}n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\notag
 		\end{align}	
 	\end{proof}
 
