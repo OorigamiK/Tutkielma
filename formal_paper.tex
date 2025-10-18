@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm, url, hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cleveref}
+
+\newtheorem{Lemma}{Lemma}
+\newtheorem{Theorem}{Theorem}
+
+\newcommand{\simlt}{\mathrel{\underset{\sim}{<}}}
+
+\begin{document}
+	\section{Notation}
+	\begin{itemize}
+		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$
+		\item Let $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$
+		\item Let $s_k(x)=\#\{(i, j)\mid j-i=k, f(i)+f(i+1)+\dots+f(j)\le x\}$
+		\item Let $\sim$ denote asymptotic equivalence. That is, 
+		\[
+		f(x)\sim g(x), x\to a\iff \lim_{x\to a} \frac{f(x)}{g(x)} = 1.
+		\]
+		We often omit the "$x\to a$" part, when it is clear from context.
+		\item Denote $f(x)\lesssim g(x) \iff \limsup\frac{f(x)}{g(x)}\le1$ and similarly 
+		\[f(x)\gtrsim g(x) \iff \limsup\frac{f(x)}{g(x)}\ge1\].
+	\end{itemize}
+	
+	\section{Preliminaries}
+	We assume throughout this section that $n=n(x)$ is the unique integer satisfying
+	\[
+	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i).
+	\]
+	Where $f : \mathbb{R}_{>0}\to\mathbb{R}_{>0}$.
+	\begin{Lemma}
+		Given $f\in RV_\alpha^+$ we have
+		\[
+		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}
+		\]
+	\end{Lemma}
+	\begin{proof}
+		Let $\epsilon>0$ and split the sum
+		\[
+		\sum_{i=1}^{n} f(i)=\sum_{i=1}^{n\epsilon} f(i)+\sum_{i=n\epsilon}^{n} f(i).
+		\]
+		We will first examine the second sum.
+		\[
+		\sum_{i=n\epsilon}^{n} f(i)=\sum_{i=n\epsilon}^{n} i^\alpha L(i)\notag\\
+		\]
+		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
+		\begin{align}
+		\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\notag\\
+		&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\notag\\
+		&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(1-\epsilon^{\alpha+1})\notag
+		\end{align}
+		Examining the first sum
+		\[
+		0<\sum_{i=1}^{n\epsilon} f(i)<M+n\epsilon f(n\epsilon),
+		\]
+		for some constant $M$. Since $f$ is eventually increasing
+		\[
+		M+n\epsilon f(n\epsilon)< M+n\epsilon f(n)=M+\epsilon n^{\alpha+1}L(n).
+		\]
+		Combining these we get
+		\begin{align}
+		\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1-\epsilon^{\alpha+1})\lesssim\sum_{i=1}^{n} f(i)&\lesssim M+\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1+\epsilon-\epsilon^{\alpha+1})\notag\\
+		\sum_{i=1}^{n} f(i)&\sim \frac{1}{\alpha+1}n^{\alpha+1}L(n)\notag
+		\end{align}
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	\bibliographystyle{plain}   % or try alpha, apalike, ieee, etc.
+	\bibliography{references}   % name of your .bib file (no .bib extension)	
+\end{document}
