@@ -3,11 +3,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{cleveref}
+\usepackage[thinc]{esdiff}
 
 \newtheorem{Lemma}{Lemma}
 \newtheorem{Theorem}{Theorem}
 
 \newcommand{\simlt}{\mathrel{\underset{\sim}{<}}}
+
+\let\epsilon\varepsilon
 
 \begin{document}
 	\section{Notation}
@@ -66,7 +69,7 @@
 		\end{align}
 	\end{proof}
 	
-	\begin{Lemma}
+	\begin{Lemma}\label{sum f range asymp}
 		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$ and $f\in RV_\alpha^+$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
 		\[
 		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
@@ -96,10 +99,126 @@
 		\end{align}
 	\end{proof}
 	
+	\begin{Lemma}
+		Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
+		\[
+		s_i(x)\sim n\phi^{-1}(\frac{i}{n})
+		\]
+		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+	\end{Lemma}
 	
+	\begin{proof}
+		Let $l,k>0$ be such that $n(k-l)=i$ and
+		\[
+		\sum_{i=nl}^{nk} f(i)\le x<\sum_{i=nl}^{nk+1} f(i)
+		\]
+		Clearly it follows that $l$ and $k$ are unique. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
+		\[
+		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{i=nl}^{nk} f(i)\sim x\sim \sum_{i=1}^{n} f(i) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
+		\]
+		Follows
+		\begin{align}
+		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\notag\\
+		k^{\alpha+1}-l^{\alpha+1}&\sim 1\notag\\
+		k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\notag\\
+		i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\notag\\
+		ln&\sim n\phi^{-1}(\frac{i}{n})\notag
+		\end{align}
+		Since $s_i(x)$ counts the number of blocks whose sum is less that $x$ of length $i$, we get
+		\[
+		s_i(x)\sim nl\sim n\phi^{-1}(\frac{i}{n})
+		\]
+	\end{proof}
 	
+	\begin{Lemma}
+		The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is strictly decreasing bijection hence has inverse and
+		\[
+		\int_{0}^{1} \phi^{-1}(t)dt=\frac{1}{2(\alpha+1)}
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+		\]
+	\end{Lemma}
 	
+	\begin{proof}
+		Taking the derivative of $\phi$
+		\begin{align}
+			\diff{\phi}{x}&=(1+x^{\alpha+1})^{-\frac{\alpha}{\alpha+1}}x^{\alpha}-1\notag\\
+			&=\frac{x^\alpha}{((1+x^{\alpha+1})^{\frac{1}{\alpha+1}})^{\alpha}}-1\notag\\
+			&<1-1=0
+		\end{align}
+		Where last inequality follows from $(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}>x$. Because $\phi$'s derivative is negative everywhere, $\phi$ is strictly decreasing. Now $\phi$ is bijection, because $\phi(0)=1$ and $\lim_{x\to\infty}\phi(x)=0$, hence has inverse.
+		
+		Since $\phi$ is strictly decreasing bijection
+		\[
+		\int_{0}^{1} \phi^{-1}(x)dx=\int_{0}^{\infty} \phi(x)dx.
+		\]
+		Doing change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$. We get
+		\[
+		dx=\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt
+		\]
+		Changing $\phi(x)$ to $t$ terms \\
+		\begin{align}
+			\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x \notag \\
+			&=(\frac{1}{1-t})^{\frac{1}{\alpha+1}}-(\frac{t}{1-t})^{\frac{1}{\alpha+1}} \notag	\\
+			&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})\notag
+		\end{align}
+		Putting it together
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\int_{0}^{1} (1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})
+			\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\notag\\
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\notag\\
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
+			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
+			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\big(B(\frac{1}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})-
+			B(\frac{2}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})\big)\notag
+		\end{align}
+		Where $B$ is the analytically extended beta function(see NIST DLMF § 5.12 \cite{NIST:DLMF})
+		\[
+		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
+		\]
+		Using gamma expression for beta functions we get
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
+			-
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
+			)\notag\\
+			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+			-
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}
+			)\notag
+		\end{align}
+		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Follows
+		\[
+		\lim_{\epsilon\to 0^+}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}=0.
+		\]
+		So the expression simplifies to
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+			\notag\\
+			&=\frac{1}{2(\alpha+1)}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+			\notag
+		\end{align}
+		Where last equality uses $z\Gamma(z)=\Gamma(z+1)$.
+	\end{proof}
 	
+	\begin{Theorem}
+		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where $C(\alpha)=\frac{1}{2(\alpha+1)}
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}$.
+	\end{Theorem}
+	
+	\begin{proof}
+		From definition of $S$ and $s_i$ it follows that
+		\[
+		S(x)=\sum_{i=1}^{n} s_i(x)
+		\]
+		%needs lemma on neglibility of head of sum.
+	\end{proof}
 	
 	\bibliographystyle{plain}
 	\bibliography{references}
