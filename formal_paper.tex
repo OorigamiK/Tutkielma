@@ -30,7 +30,7 @@
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i).
 	\]
 	Where $f : \mathbb{R}_{>0}\to\mathbb{R}_{>0}$.
-	\begin{Lemma}
+	\begin{Lemma}\label{sum f Asymp}
 		Given $f\in RV_\alpha^+$ we have
 		\[
 		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}
@@ -66,11 +66,41 @@
 		\end{align}
 	\end{proof}
 	
+	\begin{Lemma}
+		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$ and $f\in RV_\alpha^+$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
+		\[
+		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
+		\]
+	\end{Lemma}
+	\begin{proof}
+		From definition of $n$ it follows $k\le l+1$. Since $f$ is eventually increasing
+		\[
+		\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
+		\]
+		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular}) and Lemma~\ref{sum f Asymp}
+		\begin{align}
+			\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\notag\\
+			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\notag\\
+			&\gtrsim 2\epsilon n^{\alpha+1}L(n)l^{\alpha+1}.\notag
+		\end{align}
+		Follows
+		\[
+		l\lesssim (\frac{1}{2\epsilon(\alpha+1)})^{\frac{1}{\alpha+1}}.
+		\]
+		Now $l$ and $k$ are bounded above and below, so  we can use uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
+		\begin{align}
+			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} (i)^\alpha L(n)\notag\\
+			&=L(n)\sum_{i=nl}^{nk} i^\alpha\notag\\
+			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\notag\\
+			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).\notag
+		\end{align}
+	\end{proof}
 	
 	
 	
 	
 	
-	\bibliographystyle{plain}   % or try alpha, apalike, ieee, etc.
-	\bibliography{references}   % name of your .bib file (no .bib extension)	
+	
+	\bibliographystyle{plain}
+	\bibliography{references}
 \end{document}
