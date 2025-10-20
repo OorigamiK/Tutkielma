@@ -32,9 +32,9 @@
 	\[
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i).
 	\]
-	Where $f : \mathbb{R}_{>0}\to\mathbb{R}_{>0}$.
+	Where $f\in RV_\alpha^+$.
 	\begin{Lemma}\label{sum f Asymp}
-		Given $f\in RV_\alpha^+$ we have
+		We have
 		\[
 		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}
 		\]
@@ -70,7 +70,7 @@
 	\end{proof}
 	
 	\begin{Lemma}\label{sum f range asymp}
-		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$ and $f\in RV_\alpha^+$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
+		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
 		\[
 		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
 		\]
@@ -205,6 +205,51 @@
 			\notag
 		\end{align}
 		Where last equality uses $z\Gamma(z)=\Gamma(z+1)$.
+	\end{proof}
+	
+	\begin{Lemma}
+		Let $\epsilon>0$ then 
+		\[
+		\sum_{i=1}^{n\epsilon} s_i(x)<\dots
+		\]
+	\end{Lemma}
+	
+	\begin{proof}
+		Clearly $s_i(x)\le f^{-1}(\frac{x}{i})$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		\begin{align}
+			\sum_{i=1}^{n\epsilon} f^{-1}(\frac{x}{i})&=\sum_{i=1}^{n\epsilon} (\frac{x}{i})^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{i})\notag\\
+			&=x^{\frac{1}{\alpha}}\sum_{i=1}^{n\epsilon} i^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{i})\notag\\
+			&\le x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \sum_{i=n\epsilon^{j+1}}^{n\epsilon^j} i^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{i})\notag\\
+			&\sim x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{t})\notag
+		\end{align}
+		Now we can use uniform convergence theorem on $\tilde{L}$
+		\begin{align}
+			x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{t})dt&\sim 
+			x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{n\epsilon^j})dt\notag\\
+			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
+			((n\epsilon^j)^{1-\frac{1}{\alpha}}-(n\epsilon^{j+1})^{1-\frac{1}{\alpha}})\notag\\
+			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})
+			\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
+			(n\epsilon^j)^{1-\frac{1}{\alpha}}\notag\\
+			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}n^{1-\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})
+			\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
+			\epsilon^{j(1-\frac{1}{\alpha})}\notag
+		\end{align}
+		Clearly
+		\[
+		\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}n^{1-\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})=O(n^2 L(n)^{\frac{1}{\alpha}}).
+		\]
+		So it is enough to show that
+		\[
+		\tilde{L}(\frac{x}{n\epsilon^{j}})L(n)^{\frac{1}{\alpha}}\sim 1
+		\]
+		We know that
+		\begin{align}
+		f^{-1}(f(n))=n\notag\\
+		n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\notag\\
+		\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1\notag
+		\end{align}
+		
 	\end{proof}
 	
 	\begin{Theorem}
