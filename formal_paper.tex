@@ -4,18 +4,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage{cleveref}
 \usepackage[thinc]{esdiff}
+\usepackage{commath}
 
-\newtheorem{Lemma}{Lemma}
-\newtheorem{Theorem}{Theorem}
-
-\newcommand{\simlt}{\mathrel{\underset{\sim}{<}}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
 
 \let\epsilon\varepsilon
 
 \begin{document}
+	\section{Introduction}
+	
 	\section{Notation}
 	\begin{itemize}
-		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$
+		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions bounded away from $0$ and $\infty$ in any closed interval with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$
 		\item Let $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$
 		\item Let $s_k(x)=\#\{(i, j)\mid j-i=k, f(i)+f(i+1)+\dots+f(j)\le x\}$
 		\item Let $\sim$ denote asymptotic equivalence. That is, 
@@ -24,21 +25,21 @@
 		\]
 		We often omit the "$x\to a$" part, when it is clear from context.
 		\item Denote $f(x)\lesssim g(x) \iff \limsup\frac{f(x)}{g(x)}\le1$ and similarly 
-		\[f(x)\gtrsim g(x) \iff \limsup\frac{f(x)}{g(x)}\ge1\].
+		\[f(x)\gtrsim g(x) \iff \liminf\frac{f(x)}{g(x)}\ge1\].
 	\end{itemize}
-	
 	\section{Preliminaries}
-	We assume throughout this section that $n=n(x)$ is the unique integer satisfying
+	We assume throughout this paper that $n=n(x)$ is the unique integer satisfying
 	\[
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i).
 	\]
 	Where $f\in RV_\alpha^+$.
-	\begin{Lemma}\label{sum f Asymp}
+	
+	\begin{lemma}\label{sum f Asymp}
 		We have
 		\[
 		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}
 		\]
-	\end{Lemma}
+	\end{lemma}
 	\begin{proof}
 		Let $\epsilon>0$ and split the sum
 		\[
@@ -50,41 +51,41 @@
 		\]
 		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
 		\begin{align}
-		\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\notag\\
-		&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\notag\\
-		&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(1-\epsilon^{\alpha+1})\notag
+			\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\notag\\
+			&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\notag\\
+			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(1-\epsilon^{\alpha+1})\notag
 		\end{align}
 		Examining the first sum
 		\[
-		0<\sum_{i=1}^{n\epsilon} f(i)<M+n\epsilon f(n\epsilon),
+		0<\sum_{i=1}^{n\epsilon} f(i)<n\epsilon f(n\epsilon).
 		\]
-		for some constant $M$. Since $f$ is eventually increasing
+		Since $f$ is eventually increasing
 		\[
-		M+n\epsilon f(n\epsilon)< M+n\epsilon f(n)=M+\epsilon n^{\alpha+1}L(n).
+		n\epsilon f(n\epsilon)< n\epsilon f(n)=\epsilon n^{\alpha+1}L(n).
 		\]
 		Combining these we get
 		\begin{align}
-		\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1-\epsilon^{\alpha+1})\lesssim\sum_{i=1}^{n} f(i)&\lesssim M+\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1+\epsilon-\epsilon^{\alpha+1})\notag\\
-		\sum_{i=1}^{n} f(i)&\sim \frac{1}{\alpha+1}n^{\alpha+1}L(n)\notag
+			\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1-\epsilon^{\alpha+1})\lesssim\sum_{i=1}^{n} f(i)&\lesssim \frac{1}{\alpha+1}n^{\alpha+1}L(n)(1+\epsilon(\alpha+1)-\epsilon^{\alpha+1})\notag\\
+			\sum_{i=1}^{n} f(i)&\sim \frac{1}{\alpha+1}n^{\alpha+1}L(n)\notag
 		\end{align}
 	\end{proof}
 	
-	\begin{Lemma}\label{sum f range asymp}
+	\begin{lemma}\label{sum f range asymp}
 		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
 		\[
 		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
 		\]
-	\end{Lemma}
+	\end{lemma}
 	\begin{proof}
 		From definition of $n$ it follows $k\le l+1$. Since $f$ is eventually increasing
 		\[
 		\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
 		\]
-		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular}) and Lemma~\ref{sum f Asymp}
+		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular}) and Lemma~\ref{sum f Asymp} %laita potter ja lemma 1 eri kohtiin
 		\begin{align}
 			\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\notag\\
 			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\notag\\
-			&\gtrsim 2\epsilon n^{\alpha+1}L(n)l^{\alpha+1}.\notag
+			&\gtrsim \epsilon n^{\alpha+1}L(n)l^{\alpha}\frac{1}{2\max(l, l^{-1})}.\notag
 		\end{align}
 		Follows
 		\[
@@ -92,58 +93,77 @@
 		\]
 		Now $l$ and $k$ are bounded above and below, so  we can use uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
 		\begin{align}
-			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} (i)^\alpha L(n)\notag\\
+			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} i^\alpha L(n)\notag\\
 			&=L(n)\sum_{i=nl}^{nk} i^\alpha\notag\\
 			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\notag\\
 			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).\notag
 		\end{align}
 	\end{proof}
 	
-	\begin{Lemma}
+	\begin{lemma}\label{s asymp}
 		Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
 		\[
-		s_i(x)\sim n\phi^{-1}(\frac{i}{n})
+		s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
 		\]
 		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
-	\end{Lemma}
+	\end{lemma}
 	
 	\begin{proof}
 		Let $l,k>0$ be such that $n(k-l)=i$ and
 		\[
-		\sum_{i=nl}^{nk} f(i)\le x<\sum_{i=nl}^{nk+1} f(i)
+		\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl}^{nk+1} f(j)
 		\]
 		Clearly it follows that $l$ and $k$ are unique. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
 		\[
-		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{i=nl}^{nk} f(i)\sim x\sim \sum_{i=1}^{n} f(i) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
+		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
 		\]
 		Follows
 		\begin{align}
-		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\notag\\
-		k^{\alpha+1}-l^{\alpha+1}&\sim 1\notag\\
-		k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\notag\\
-		i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\notag\\
-		ln&\sim n\phi^{-1}(\frac{i}{n})\notag
+			\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\notag\\
+			k^{\alpha+1}-l^{\alpha+1}&\sim 1\notag\\
+			k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\notag\\
+			i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\notag\\
+			ln&\sim n\phi^{-1}(\frac{i}{n})\notag
 		\end{align}
-		Since $s_i(x)$ counts the number of blocks whose sum is less that $x$ of length $i$, we get
+		Since $s_i(x)$ counts the number of blocks whose sum is less than $x$ of length $i$, we get
 		\[
-		s_i(x)\sim nl\sim n\phi^{-1}(\frac{i}{n})
+		s_i(x) = nl\sim n\phi^{-1}(\frac{i}{n}).
 		\]
 	\end{proof}
+	\section{Case $\alpha=1$}
+
 	
-	\begin{Lemma}
+	
+	For $\alpha=1$ the crude bounds work. Clearly
+	\[
+	\sum_{i=1}^{n} f^{-1}(\frac{x}{i})-i<S(x)<\sum_{i=1}^{n} f^{-1}(\frac{x}{i}).
+	\]
+	Doing change of variables we get
+	\begin{align}
+	\sum_{i=1}^{n} f^{-1}(\frac{x}{i})&\sim x \int_{1}^{n} t^{-1}{L}(\frac{x}{t})dt \notag\\
+	&=x\int_{x/n}^{x} \frac{\tilde{L}(u)}{u} du \notag\\
+	&>x\int_{1}^{x} \frac{\tilde{L}(u)}{u} du\notag
+	\end{align}
+	From Karamata's Theorem (direct half) (see proposition 1.5.8~\cite{bingham1987regular}) it follows
+	\[
+	\int_{1}^{x} \frac{\tilde{L}(u)}{u} du>M\tilde{L}(x),
+	\]
+	given large enough $x$. 
+	\section{Case $\alpha>1$}
+	\begin{lemma}\label{phi integral}
 		The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is strictly decreasing bijection hence has inverse and
 		\[
 		\int_{0}^{1} \phi^{-1}(t)dt=\frac{1}{2(\alpha+1)}
 		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
 		\]
-	\end{Lemma}
+	\end{lemma}
 	
 	\begin{proof}
 		Taking the derivative of $\phi$
 		\begin{align}
 			\diff{\phi}{x}&=(1+x^{\alpha+1})^{-\frac{\alpha}{\alpha+1}}x^{\alpha}-1\notag\\
 			&=\frac{x^\alpha}{((1+x^{\alpha+1})^{\frac{1}{\alpha+1}})^{\alpha}}-1\notag\\
-			&<1-1=0
+			&<1-1=0\notag
 		\end{align}
 		Where last inequality follows from $(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}>x$. Because $\phi$'s derivative is negative everywhere, $\phi$ is strictly decreasing. Now $\phi$ is bijection, because $\phi(0)=1$ and $\lim_{x\to\infty}\phi(x)=0$, hence has inverse.
 		
@@ -151,15 +171,21 @@
 		\[
 		\int_{0}^{1} \phi^{-1}(x)dx=\int_{0}^{\infty} \phi(x)dx.
 		\]
+		Next we show that the integral converges. Since $x^{\frac{1}{\alpha+1}}$ is increasing with decreasing derivative, we have $(1+y)^{\frac{1}{\alpha+1}}<y^{\frac{1}{\alpha+1}}+\frac{1}{\alpha+1}y^{-\frac{\alpha}{\alpha+1}}$. Using this we get
+		\[
+		\phi(x)<x^{-\alpha},
+		\]
+		so the integral converges.
+		
 		Doing change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$. We get
 		\[
-		dx=\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt
+		dx=\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt.
 		\]
 		Changing $\phi(x)$ to $t$ terms \\
 		\begin{align}
 			\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x \notag \\
 			&=(\frac{1}{1-t})^{\frac{1}{\alpha+1}}-(\frac{t}{1-t})^{\frac{1}{\alpha+1}} \notag	\\
-			&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})\notag
+			&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}}).\notag
 		\end{align}
 		Putting it together
 		\begin{align}
@@ -167,33 +193,75 @@
 			\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\notag\\
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\notag\\
-			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}
-			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
-			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
-			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{-\frac{\alpha}{\alpha+1}}dt-\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\epsilon-\frac{\alpha+3}{\alpha+1}}t^{\frac{1-\alpha}{\alpha+1}}dt\notag\\
-			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}\big(B(\frac{1}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})-
-			B(\frac{2}{\alpha+1}, \epsilon-\frac{2}{\alpha+1})\big)\notag
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag
 		\end{align}
-		Where $B$ is the analytically extended beta function(see NIST DLMF § 5.12 \cite{NIST:DLMF})
+		
+		
+		
+		Since $\lim_{r\to 0} (1-t)^r=1, t\in (0,1)$, we can take any $\epsilon, \delta>0$ such that $\abs{(1-t)^r-1}<\epsilon, t\in[\delta, 1-\delta]$ for small enough $r>0$.
+		Since the integral converges
+		\begin{align}
+			\int_{0}^{1-\delta} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+			=\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt+h(\delta)\notag
+		\end{align}
+		Where $\lim_{\delta\to 0} h(\delta)=0$.
+		\begin{align}
+			&\abs{\int_{0}^{1-\delta} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt-
+			\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt}\notag\\
+			&=\abs{\int_{0}^{1-\delta} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt-
+			\int_{0}^{1-\delta} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt+h(\delta)}\notag\\
+			&=\abs{\int_{0}^{1-\delta} ((1-t)^{r}-1)(1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt+h(\delta)}\notag\\
+			&<\epsilon \int_{0}^{1-\delta} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt+\abs{h(\delta)}\notag
+		\end{align}
+		Letting $\epsilon, \delta\to 0$, gives that the limit can be taken out of the integral
+		\begin{align}
+			\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+			=\lim_{r\to0} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag
+		\end{align}
+		
+		Let $B$ be the beta function (see NIST DLMF § 5.12.1 \cite{NIST:DLMF})
 		\[
 		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
 		\]
+		The beta function can be analytically extended to $\left(\mathbb{C}\setminus \mathbb{Z},\mathbb{C}\setminus \mathbb{Z}\right)$ using Pochhammer's integral (see NIST DLMF § 5.12.12).
+
+		
+		
+		\begin{align}
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+			&=\frac{1}{\alpha+1} \lim_{r\to0} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\notag\\
+			&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(B(\frac{1}{\alpha+1}, r-\frac{2}{\alpha+1})-
+			B(\frac{2}{\alpha+1}, r-\frac{2}{\alpha+1})\right).\notag
+		\end{align}
 		Using gamma expression for beta functions we get
 		\begin{align}
-			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
-			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
+			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{r\to 0}\left(
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+r-\frac{2}{\alpha+1})}
 			-
-			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(\epsilon-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+\epsilon-\frac{2}{\alpha+1})}
-			)\notag\\
-			&=\frac{1}{\alpha+1}\lim_{\epsilon\to 0^+}(
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+r-\frac{2}{\alpha+1})}
+			\right)\notag\\
+			&=\frac{1}{\alpha+1}\lim_{r\to 0}\left(
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
 			-
-			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}
-			)\notag
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}
+			\right).\notag
 		\end{align}
 		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Follows
 		\[
-		\lim_{\epsilon\to 0^+}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(\epsilon)}=0.
+		\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0.
 		\]
 		So the expression simplifies to
 		\begin{align}
@@ -201,69 +269,195 @@
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
 			\notag\\
 			&=\frac{1}{2(\alpha+1)}
-			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})},
 			\notag
 		\end{align}
-		Where last equality uses $z\Gamma(z)=\Gamma(z+1)$.
+		where last equality uses $z\Gamma(z)=\Gamma(z+1)$.
 	\end{proof}
 	
-	\begin{Lemma}
+	\begin{lemma}\label{head's neglible}
 		Let $\epsilon>0$ then 
 		\[
-		\sum_{i=1}^{n\epsilon} s_i(x)<\dots
+		\sum_{i=1}^{n\epsilon} s_i(x)=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}.
 		\]
-	\end{Lemma}
+	\end{lemma}
 	
 	\begin{proof}
 		Clearly $s_i(x)\le f^{-1}(\frac{x}{i})$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
-		\begin{align}
-			\sum_{i=1}^{n\epsilon} f^{-1}(\frac{x}{i})&=\sum_{i=1}^{n\epsilon} (\frac{x}{i})^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{i})\notag\\
-			&=x^{\frac{1}{\alpha}}\sum_{i=1}^{n\epsilon} i^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{i})\notag\\
-			&\le x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \sum_{i=n\epsilon^{j+1}}^{n\epsilon^j} i^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{i})\notag\\
-			&\sim x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{t})\notag
-		\end{align}
-		Now we can use uniform convergence theorem on $\tilde{L}$
-		\begin{align}
-			x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{t})dt&\sim 
-			x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \int_{n\epsilon^{j+1}}^{n\epsilon^j} t^{-\frac{1}{\alpha}} \tilde{L}(\frac{x}{n\epsilon^j})dt\notag\\
-			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
-			((n\epsilon^j)^{1-\frac{1}{\alpha}}-(n\epsilon^{j+1})^{1-\frac{1}{\alpha}})\notag\\
-			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})
-			\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
-			(n\epsilon^j)^{1-\frac{1}{\alpha}}\notag\\
-			&=\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}n^{1-\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})
-			\sum_{j=1}^{K} \tilde{L}(\frac{x}{n\epsilon^{j}})
-			\epsilon^{j(1-\frac{1}{\alpha})}\notag
-		\end{align}
-		Clearly
 		\[
-		\frac{\alpha}{\alpha-1}x^{\frac{1}{\alpha}}n^{1-\frac{1}{\alpha}}(1-\epsilon^{1-\frac{1}{\alpha}})=O(n^2 L(n)^{\frac{1}{\alpha}}).
+		\sum_{i=1}^{n\epsilon} f^{-1}(\frac{x}{i})\sim  \int_{1}^{n\epsilon} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})dt
 		\]
-		So it is enough to show that
+		By Potter's bound
 		\[
-		\tilde{L}(\frac{x}{n\epsilon^{j}})L(n)^{\frac{1}{\alpha}}\sim 1
+		\tilde{L}(\frac{x}{t})\le M\tilde{L}(\frac{x}{n})(\frac{n}{t})^{\delta},
 		\]
+		where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(1-\frac{1}{\alpha})$. Now we can bound the integral
+		\begin{align}
+			x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})dt&\le
+			x^{\frac{1}{\alpha}}M\tilde{L}(\frac{x}{n})n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}\notag\\
+		\end{align}
 		We know that
 		\begin{align}
-		f^{-1}(f(n))=n\notag\\
-		n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\notag\\
-		\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1\notag
+			f^{-1}(f(n))=n\notag\\
+			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\notag\\
+			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1\notag
 		\end{align}
-		
+		Follows
+		\begin{align}
+			x^{\frac{1}{\alpha}}M\tilde{L}(\frac{x}{n})n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
+			&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\notag\\
+			&=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\notag
+		\end{align}		
 	\end{proof}
 	
-	\begin{Theorem}
-		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where $C(\alpha)=\frac{1}{2(\alpha+1)}
-		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}$.
-	\end{Theorem}
+	\begin{theorem}
+		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where 
+		\[
+		C(\alpha)=\frac{1}{2(\alpha+1)}
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
+		\]
+	\end{theorem}
 	
 	\begin{proof}
-		From definition of $S$ and $s_i$ it follows that
+		Let $\epsilon>0$. From definition of $S$ and $s_i$ it follows that
 		\[
 		S(x)=\sum_{i=1}^{n} s_i(x)
 		\]
-		%needs lemma on neglibility of head of sum.
+		Splitting the sum
+		\[
+		S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x)
+		\]
+		Using lemma~\ref{head's neglible} we can control the first sum, so we will focus on the second sum. Using lemma~\ref{s asymp} we get
+		\begin{align}
+			\sum_{i=n\epsilon}^{n} s_i(x)&\sim \sum_{i=n\epsilon}^{n} n\phi^{-1}(\frac{i}{n})\notag\\
+			&=n\sum_{i=n\epsilon}^{n} \phi^{-1}(\frac{i}{n})\notag\\
+			&\sim n \int_{n\epsilon}^{n} \phi^{-1}(\frac{t}{n})dt\notag\\
+			&=n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt.\notag
+		\end{align}
+		We can bound $\phi^{-1}$, using the bound derived in Lemma~\ref{phi integral}
+		\begin{align}
+			\phi(x)&<x^{-\alpha}\notag\\
+			\phi(x^{-\frac{1}{\alpha}})&<x\notag\\
+			x^{-\frac{1}{\alpha}}&<\phi^{-1}(x)\notag
+		\end{align}
+		Now we can bound
+		\begin{align}
+			\int_{0}^{\epsilon} \phi^{-1}(t)dt&=\epsilon\phi^{-1}(\epsilon)+\int_{\phi^{-1}(\epsilon)}^{\infty} \phi(t)dt\notag\\
+			&<\epsilon^{1-\frac{1}{\alpha}}+\phi^{-1}(\epsilon)^{1-\alpha}.\notag
+		\end{align}
+		We get
+		\begin{align}
+			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt=n^2(\int_{0}^{1} \phi^{-1}(t)dt-\int_{0}^{\epsilon} \phi^{-1}(t)dt)\notag\\
+			>n^2(C(\alpha)-\epsilon^{1-\frac{1}{\alpha}}+\phi^{-1}(\epsilon)^{1-\alpha})\notag
+		\end{align}
+		and
+		\begin{align}
+			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt<n^2C(\alpha).\notag
+		\end{align}
+		Combining this and bound from Lemma~\ref{head's neglible} the Theorem follows.
 	\end{proof}
+	
+	Assume \(\alpha>1\). We start from
+	\[
+	I:=\int_0^\infty \phi(x)\,dx
+	=\int_0^\infty\Big((1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x\Big)\,dx.
+	\]
+	
+	Make the substitution
+	\[
+	t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}},\qquad t\in(0,1).
+	\]
+	Equivalently set \(s=t^{\frac{1}{\alpha+1}}\in(0,1)\). We record useful identities.
+	Since \(t=\dfrac{x^{\alpha+1}}{1+x^{\alpha+1}}\) we have
+	\[
+	1-t=\frac{1}{1+x^{\alpha+1}},\qquad
+	(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}=(1-t)^{-\frac{1}{\alpha+1}},
+	\]
+	and
+	\[
+	x=\Big(\frac{t}{1-t}\Big)^{\frac{1}{\alpha+1}}.
+	\]
+	Writing \(t=s^{\alpha+1}\) gives the compact expressions
+	\[
+	x=s\,(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}},\qquad
+	(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}=(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}}.
+	\]
+	
+	Hence
+	\[
+	\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
+	=(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}}(1-s).
+	\]
+	
+	Differentiate \(x(s)=s(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}}\). A short calculation yields
+	\[
+	\frac{dx}{ds}=(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}-1}.
+	\]
+	Therefore
+	\[
+	\phi(x)\,dx
+	=(1-s)\,(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}}\cdot(1-s^{\alpha+1})^{-\frac{1}{\alpha+1}-1}\,ds
+	=(1-s)\,(1-s^{\alpha+1})^{-\frac{2}{\alpha+1}-1}\,ds.
+	\]
+	
+	Thus the integral becomes
+	\[
+	I=\int_{0}^{1}(1-s)\,(1-s^{\alpha+1})^{-\frac{2}{\alpha+1}-1}\,ds.
+	\]
+	
+	Now put \(u=s^{\alpha+1}\). Then \(du=(\alpha+1)s^{\alpha}\,ds\), so \(ds=\dfrac{du}{(\alpha+1)u^{\frac{\alpha}{\alpha+1}}}\)
+	and \(s=u^{\frac{1}{\alpha+1}}\). Substitute and split the factor \((1-s)=1-u^{\frac{1}{\alpha+1}}\):
+	\[
+	\begin{aligned}
+		I
+		&=\frac{1}{\alpha+1}\int_{0}^{1}
+		(1-u^{\frac{1}{\alpha+1}})
+		\,u^{-\frac{\alpha}{\alpha+1}}\,(1-u)^{-\frac{2}{\alpha+1}-1}\,du\\[6pt]
+		&=\frac{1}{\alpha+1}\Bigg[
+		\int_{0}^{1} u^{-\frac{\alpha}{\alpha+1}}(1-u)^{-\frac{2}{\alpha+1}-1}\,du
+		-
+		\int_{0}^{1} u^{\frac{1-\alpha}{\alpha+1}}(1-u)^{-\frac{2}{\alpha+1}-1}\,du
+		\Bigg].
+	\end{aligned}
+	\]
+	
+	Each integrand is of the Beta form \(u^{a-1}(1-u)^{b-1}\). Identify the parameters:
+	\[
+	\begin{aligned}
+		\text{First integral: }& a_1=1-\frac{\alpha}{\alpha+1}=\frac{1}{\alpha+1},\quad
+		b_1=-\frac{2}{\alpha+1};\\[4pt]
+		\text{Second integral: }& a_2=\frac{1-\alpha}{\alpha+1}+1=\frac{2}{\alpha+1},\quad
+		b_2=-\frac{2}{\alpha+1}.
+	\end{aligned}
+	\]
+	
+	We have written the integral as a difference of Beta integrals:
+	\[
+	I=\frac{1}{\alpha+1}\big(B(a_1,b_1)-B(a_2,b_1)\big),
+	\]
+	where \(B(a,b)=\int_0^1 u^{a-1}(1-u)^{b-1}\,du\) is the Beta function. The formula \(B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}\)
+	extends (by analytic continuation) to these parameter values. For \(\alpha>1\) the combination simplifies without encountering poles:
+	\[
+	\begin{aligned}
+		I
+		&=\frac{1}{\alpha+1}\left(
+		\frac{\Gamma\!\big(\frac{1}{\alpha+1}\big)\Gamma\!\big(-\frac{2}{\alpha+1}\big)}
+		{\Gamma\!\big(-\frac{1}{\alpha+1}\big)}
+		-
+		\frac{\Gamma\!\big(\frac{2}{\alpha+1}\big)\Gamma\!\big(-\frac{2}{\alpha+1}\big)}
+		{\Gamma\!\big(0\big)}
+		\right).
+	\end{aligned}
+	\]
+	The second term vanishes in the limit because \(\Gamma(0+r)\sim 1/r\) while the numerator stays finite. Simplifying the remaining Gamma factors by the identity \(z\Gamma(z)=\Gamma(z+1)\) gives
+	\[
+	I=\frac{1}{2(\alpha+1)}
+	\frac{\Gamma\!\big(\frac{1}{\alpha+1}\big)\Gamma\!\big(\frac{\alpha-1}{\alpha+1}\big)}
+	{\Gamma\!\big(\frac{\alpha}{\alpha+1}\big)}.
+	\]
+	
+	This equals \(\int_0^1\phi^{-1}(t)\,dt\) because \(\phi\) is a decreasing bijection \((0,\infty)\to(0,1)\).
+	
 	
 	\bibliographystyle{plain}
 	\bibliography{references}
