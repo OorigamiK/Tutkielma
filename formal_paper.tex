@@ -25,20 +25,28 @@
 	Determining the asymptotic behavior of the count of block sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown. In this paper we find asymptotic formula for class of regularly varying sequences, that satisfies certain mild assumptions. The exact assumptions are given below.
 	
 	Our main theorem provides an asymptotic for
-	\[
+	\begin{align}
 	S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}.
-	\]
+	\end{align}
 	That is 
-	\[
+	\begin{align}
 	S(x)\sim n^2C(\alpha), n\to\infty
-	\]
-	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and \[C(\alpha)=\frac{1}{2(\alpha+1)}
-	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}\] for a regularly varying function $f$ with index $\alpha>1$ that satisfies certain assumptions.
+	\end{align}
+	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
+	\begin{align}
+	C(\alpha)=\frac{1}{2(\alpha+1)}
+	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+	\end{align} 
+	for a regularly varying function $f$ with index $\alpha>1$ that satisfies certain assumptions.
 	
-	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into sum of $s_i$ that count the number of blocks of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of \[\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}\] which allows us to calculate the exact coefficient in the asymptotic.
+	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into sum of $s_i$ that count the number of blocks of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of 
+	\begin{align}
+	\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}
+	\end{align} 
+	which allows us to calculate the exact coefficient in the asymptotic.
 	
 	
-	This paper is organized as follows. Section 2 is on notation. Section 3 first proves basic lemmas about asymptotes, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section 4 proves the theorem 1 and one technical lemma bounding sum of $s_i$ for small $i$'s.
+	This paper is organized as follows. Section 2 is on notation. Section 3 first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section 4 proves the theorem 1 and one technical lemma bounding sum of $s_i$ for small $i$'s.
 	
 	\section{Notation}
 	\begin{itemize}
@@ -46,140 +54,146 @@
 		\item Let $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$.
 		\item Let $s_k(x)=\#\{(i, j)\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$.
 		\item Let $\sim$ denote asymptotic equivalence. That is, 
-		\[
+		\begin{align}
 		f(x)\sim g(x), x\to a\iff \lim_{x\to a} \frac{f(x)}{g(x)} = 1.
-		\]
+		\end{align}
 		We often omit the "$x\to a$" part, when it is clear from context.
 		\item Denote $f(x)\lesssim g(x) \iff \limsup\frac{f(x)}{g(x)}\le1$ and similarly 
-		\[f(x)\gtrsim g(x) \iff \liminf\frac{f(x)}{g(x)}\ge1.\]
+		\begin{align}
+		f(x)\gtrsim g(x) \iff \liminf\frac{f(x)}{g(x)}\ge1.
+		\end{align}
 		\item We denote sums of the form
-		\[
+		\begin{align}
 		\sum_{x< i\le y} F(i)
-		\]
+		\end{align}
 		with
-		\[
+		\begin{align}
 		\sum_{i=x}^{y} F(i).
-		\]
+		\end{align}
 		
 	\end{itemize}
 	\section{Preliminaries}
 	We assume throughout this paper that $n=n(x)$ is the unique integer satisfying
-	\[
+	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
-	\]
+	\end{align}
 	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$, for some slowly varying function $L$.
 	
 	\begin{lemma}\label{sum f Asymp}
 		We have
-		\[
+		\begin{align}
 		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}=\frac{nf(n)}{\alpha+1}
-		\]
+		\end{align}
 	\end{lemma}
 	\begin{proof}
 		Let $\epsilon>0$ and split the sum
-		\[
+		\begin{align}
 		\sum_{i=1}^{n} f(i)=\sum_{i=1}^{n\epsilon} f(i)+\sum_{i=n\epsilon}^{n} f(i).
-		\]
+		\end{align}
 		We will first examine the second sum.
-		\[
+		\begin{align}
 		\sum_{i=n\epsilon}^{n} f(i)=\sum_{i=n\epsilon}^{n} i^\alpha L(i)
-		\]
+		\end{align}
 		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
-		\begin{align*}
+		\begin{align}
 			\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\\
 			&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\\
 			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(1-\epsilon^{\alpha+1})
-		\end{align*}
+		\end{align}
 		Examining the first sum
-		\[
+		\begin{align}
 		\sum_{i=1}^{n\epsilon} f(i)<n\epsilon f(n\epsilon).
-		\]
+		\end{align}
 		Since $f$ is eventually increasing
-		\[
+		\begin{align}
 		n\epsilon f(n\epsilon)< n\epsilon f(n)=\epsilon n^{\alpha+1}L(n).
-		\]
+		\end{align}
 		Combining these we get
-		\begin{align*}
+		\begin{align}
 			\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1-\epsilon^{\alpha+1})\lesssim\sum_{i=1}^{n} f(i)&\lesssim \frac{1}{\alpha+1}n^{\alpha+1}L(n)(1+\epsilon(\alpha+1)-\epsilon^{\alpha+1})\\
 			\sum_{i=1}^{n} f(i)&\sim \frac{1}{\alpha+1}n^{\alpha+1}L(n)
-		\end{align*}
+		\end{align}
 	\end{proof}
 	
 	\begin{lemma}\label{sum f range asymp}
-		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If \[\sum_{i=nl}^{nk} f(i)<x\] then
-		\[
+		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If 
+		\begin{align}
+		\sum_{i=nl}^{nk} f(i)<x
+		\end{align} 
+		then
+		\begin{align}
 		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
-		\]
+		\end{align}
 	\end{lemma}
 	\begin{proof}
 		From the definition of $n$ it follows $k\le l+1$. Since $f$ is eventually increasing
-		\[
+		\begin{align}
 		\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
-		\]
+		\end{align}
 		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular}) and Lemma~\ref{sum f Asymp} %laita potter ja lemma 1 eri kohtiin
-		\begin{align*}
+		\begin{align}
 			\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\\
 			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\\
 			&\gtrsim \epsilon n^{\alpha+1}L(n)l^{\alpha}\frac{1}{2\max(l, l^{-1})}.
-		\end{align*}
+		\end{align}
 		Thus
-		\[
+		\begin{align}
 		l\lesssim \max\left({(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha+1}}}, {(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha-1}}}\right).
-		\]
+		\end{align}
 		Now $l$ and $k$ are bounded above and below, so  we can use uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
-		\begin{align*}
+		\begin{align}
 			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} i^\alpha L(n)\\
 			&=L(n)\sum_{i=nl}^{nk} i^\alpha\\
 			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\\
 			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
-		\end{align*}
+		\end{align}
 	\end{proof}
 	
 	\begin{lemma}\label{phi integral}
 		The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is strictly decreasing bijection hence has inverse and
-		\[
+		\begin{align}
 		\int_{0}^{1} \phi^{-1}(t)dt=\frac{1}{2(\alpha+1)}
 		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
-		\]
+		\end{align}
 		for $\alpha>1$.
 	\end{lemma}
 	
 	\begin{proof}
 		Taking the derivative of $\phi$
-		\begin{align*}
+		\begin{align}
 			\diff{\phi}{x}&=(1+x^{\alpha+1})^{-\frac{\alpha}{\alpha+1}}x^{\alpha}-1\\
 			&=\frac{x^\alpha}{((1+x^{\alpha+1})^{\frac{1}{\alpha+1}})^{\alpha}}-1\\
 			&<1-1=0
-		\end{align*}
+		\end{align}
 		where last inequality follows from $(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}>x$. Because $\phi$'s derivative is negative everywhere, $\phi$ is strictly decreasing. Now $\phi$ is bijection, because $\phi(0)=1$ and $\lim_{x\to\infty}\phi(x)=0$, hence has inverse. Since $\phi$ is strictly decreasing bijection
-		\[
+		\begin{align}
 		\int_{0}^{1} \phi^{-1}(x)dx=\int_{0}^{\infty} \phi(x)dx.
-		\]
+		\end{align}
 		Next we show that the integral converges. Since $x^{\frac{1}{\alpha+1}}$ is increasing with decreasing derivative, we have $(1+y)^{\frac{1}{\alpha+1}}<y^{\frac{1}{\alpha+1}}+\frac{1}{\alpha+1}y^{-\frac{\alpha}{\alpha+1}}$. Using this we get
-		\[
+		\begin{align}
 		\phi(x)<x^{-\alpha},
-		\]
+		\end{align}
 		so the integral converges.
 		
 		Doing change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$. We get
-		\[
+		\begin{align}
 		dx=\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt.
-		\]
+		\end{align}
 		Changing $\phi(x)$ to $t$ terms \\
-		\begin{align*}
+		\begin{align}
 			\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x  \\
 			&=(\frac{1}{1-t})^{\frac{1}{\alpha+1}}-(\frac{t}{1-t})^{\frac{1}{\alpha+1}} 	\\
 			&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}}).
-		\end{align*}
+		\end{align}
 		Putting it together
-		\begin{align*}
+		\begin{align}
 			\int_{0}^{\infty} \phi(x)dx&=\int_{0}^{1} (1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})
 			\frac{1}{\alpha+1}\big(\frac{t}{1-t}\big)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\\
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\\
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt
-		\end{align*}
+		\end{align}
 		
 		
 		
@@ -187,30 +201,30 @@
 		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$ and $g(t)=(1-t)^{-\frac{2}{\alpha+1}-1}
 		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$. Since for each $r>0$, $g_r(t)\to g(t), r\to0$ pointwise
 		and $\abs{g_r(t)}<\abs{g(t)}$, we can use dominated convergence theorem. Thus
-		\begin{align*}
+		\begin{align}
 			\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
 			=\lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
-		\end{align*}
+		\end{align}
 		
 		Let $B$ be the beta function (see NIST DLMF § 5.12.1 \cite{NIST:DLMF})
-		\[
+		\begin{align}
 		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
-		\]
+		\end{align}
 		The beta function can be analytically extended to $\left(\mathbb{C}\setminus \mathbb{Z},\mathbb{C}\setminus \mathbb{Z}\right)$ using Pochhammer's integral (see NIST DLMF § 5.12.12 \cite{NIST:DLMF}).
 		%give more arguments for the analytic continuation
 		%show explicitly that there is the required region.
-		\begin{align*}
+		\begin{align}
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
 			&=\frac{1}{\alpha+1} \lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
 			&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(B\left(\frac{1}{\alpha+1}, r-\frac{2}{\alpha+1}\right)-
 			B\left(\frac{2}{\alpha+1}, r-\frac{2}{\alpha+1}\right)\right).
-		\end{align*}
+		\end{align}
 		Using gamma expression for beta functions we get
-		\begin{align*}
+		\begin{align}
 			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+r-\frac{2}{\alpha+1})}
 			-
@@ -221,135 +235,158 @@
 			-
 			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}
 			\right).
-		\end{align*}
+		\end{align}
 		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Thus
-		\[
+		\begin{align}
 		\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0
-		\]
+		\end{align}
 		so the expression simplifies to
-		\begin{align*}
+		\begin{align}
 			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
 			\\
 			&=\frac{1}{2(\alpha+1)}
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
-		\end{align*}
+		\end{align}
 		where last equality uses $z\Gamma(z)=\Gamma(z+1)$.
 	\end{proof}
 	
 	\begin{lemma}\label{s asymp}
 		Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
-		\[
+		\begin{align}
 		s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
-		\]
+		\end{align}
 		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
 	\end{lemma}
 	
 	\begin{proof}
 		Let $l,k>0$ be such that $n(k-l)=i$ and
-		\[
+		\begin{align}
 		\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
-		\]
+		\end{align}
 		%not unique but almost unique to the point it doesnt matter
 		Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
-		\[
+		\begin{align}
 		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
-		\]
+		\end{align}
 		Thus
-		\begin{align*}
+		\begin{align}
 			\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
 			k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
 			k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
 			i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
 			ln&\sim n\phi^{-1}(\frac{i}{n}).
-		\end{align*}
+		\end{align}
 		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of blocks whose sum is less than $x$ of length $i$, we get
-		\[
+		\begin{align}
 		s_i(x) = nl\sim n\phi^{-1}(\frac{i}{n}).
-		\]
+		\end{align}
+	\end{proof}
+	
+	\section{case $\alpha<1$}
+	Moser's idea in \cite{Moser_1963} can be extended to case $\alpha<1$. The idea is that
+	\begin{align}
+	f^{-1}(\frac{x}{k})-k\le s_k(x)\le f^{-1}(\frac{x}{k})
+	\end{align}
+	\begin{lemma}
+		We have following asymptotic
+		\begin{align}
+		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim 
+		\end{align}
+	\end{lemma}
+	\begin{proof}
+		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		\begin{align}
+		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \int_{1}^{n} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})
+		\end{align}
+		By Potter's bound
+		\begin{align}
+		\tilde{L}(\frac{x}{t})\le M\tilde{L}(\frac{x}{n})(\frac{n}{t})^{\delta},
+		\end{align}
+		where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(\frac{1}{\alpha}-1)$.
 	\end{proof}
  
-	\section{Proof of the main theorem}
+	\section{Case $\alpha>1$}
 	\begin{lemma}\label{head's neglible}
 		Let $\epsilon>0$ and $\alpha>1$ then 
-		\[
+		\begin{align}
 		\sum_{i=1}^{n\epsilon} s_i(x)=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}.
-		\]
+		\end{align}
 	\end{lemma}
 	
 	\begin{proof}
 		Clearly $s_i(x)\le f^{-1}(\frac{x}{i})$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
-		\[
+		\begin{align}
 		\sum_{i=1}^{n\epsilon} f^{-1}(\frac{x}{i})\sim  \int_{1}^{n\epsilon} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})dt
-		\]
+		\end{align}
 		By Potter's bound
-		\[
+		\begin{align}
 		\tilde{L}(\frac{x}{t})\le M\tilde{L}(\frac{x}{n})(\frac{n}{t})^{\delta},
-		\]
+		\end{align}
 		where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(1-\frac{1}{\alpha})$. Now we can bound the integral
-		\begin{align*}
+		\begin{align}
 			x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})dt&\le
 			x^{\frac{1}{\alpha}}M\tilde{L}(\frac{x}{n})n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}\\
-		\end{align*}
+		\end{align}
 		By definition
-		\begin{align*}
+		\begin{align}
 			f^{-1}(f(n))=n\\
 			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
 			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
-		\end{align*}
+		\end{align}
 		Thus
-		\begin{align*}
+		\begin{align}
 			x^{\frac{1}{\alpha}}M\tilde{L}(\frac{x}{n})n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
 			&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\frac{2\alpha}{\alpha-1}\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\\
 			&=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}
-		\end{align*}		
+		\end{align}		
 	\end{proof}
 	
 	\begin{theorem}
 		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where 
-		\[
+		\begin{align}
 		C(\alpha)=\frac{1}{2(\alpha+1)}
 		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
-		\]
+		\end{align}
 		For $\alpha>1$.
 	\end{theorem}
 	
 	\begin{proof}
 		Let $\epsilon>0$. From the definition of $S$ and $s_i$ it follows that
-		\[
+		\begin{align}
 		S(x)=\sum_{i=1}^{n} s_i(x).
-		\]
+		\end{align}
 		Splitting the sum
-		\[
+		\begin{align}
 		S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x)
-		\]
+		\end{align}
 		Using lemma~\ref{head's neglible} we can control the first sum, so we will focus on the second sum. Using lemma~\ref{s asymp} we get
-		\begin{align*}
+		\begin{align}
 			\sum_{i=n\epsilon}^{n} s_i(x)&\sim \sum_{i=n\epsilon}^{n} n\phi^{-1}(\frac{i}{n})\\
 			&=n\sum_{i=n\epsilon}^{n} \phi^{-1}(\frac{i}{n})\\
 			&\sim n \int_{n\epsilon}^{n} \phi^{-1}(\frac{t}{n})dt\\
 			&=n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt.
-		\end{align*}
+		\end{align}
 		We can bound $\phi^{-1}$, using the bound derived in Lemma~\ref{phi integral}
-		\begin{align*}
+		\begin{align}
 			\phi(x)&<x^{-\alpha}\\
 			\phi(x^{-\frac{1}{\alpha}})&<x\\
 			x^{-\frac{1}{\alpha}}&<\phi^{-1}(x)
-		\end{align*}
+		\end{align}
 		Now we can bound
-		\begin{align*}
+		\begin{align}
 			\int_{0}^{\epsilon} \phi^{-1}(t)dt&=\epsilon\phi^{-1}(\epsilon)+\int_{\phi^{-1}(\epsilon)}^{\infty} \phi(t)dt\\
 			&<\epsilon^{1-\frac{1}{\alpha}}+\phi^{-1}(\epsilon)^{1-\alpha}.
-		\end{align*}
+		\end{align}
 		We get
-		\begin{align*}
+		\begin{align}
 			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt=n^2(\int_{0}^{1} \phi^{-1}(t)dt-\int_{0}^{\epsilon} \phi^{-1}(t)dt)\\
 			>n^2(C(\alpha)-\epsilon^{1-\frac{1}{\alpha}}+\phi^{-1}(\epsilon)^{1-\alpha})
-		\end{align*}
+		\end{align}
 		and
-		\begin{align*}
+		\begin{align}
 			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt<n^2C(\alpha).
-		\end{align*}
+		\end{align}
 		Combining this and bound from Lemma~\ref{head's neglible} the Theorem follows.
 	\end{proof}
 	
