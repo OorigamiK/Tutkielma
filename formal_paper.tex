@@ -32,8 +32,8 @@
 	\[
 	S(x)\sim n^2C(\alpha), n\to\infty
 	\]
-	where $C(\alpha)=\frac{1}{2(\alpha+1)}
-	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}$ and $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$, for a regularly varying function $f$ with index $\alpha>1$ that satisfies certain assumptions.
+	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and \[C(\alpha)=\frac{1}{2(\alpha+1)}
+	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}\] for a regularly varying function $f$ with index $\alpha>1$ that satisfies certain assumptions.
 	
 	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into sum of $s_i$ that count the number of blocks of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of \[\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}\] which allows us to calculate the exact coefficient in the asymptotic.
 	
@@ -122,7 +122,7 @@
 			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\\
 			&\gtrsim \epsilon n^{\alpha+1}L(n)l^{\alpha}\frac{1}{2\max(l, l^{-1})}.
 		\end{align*}
-		Follows
+		Thus
 		\[
 		l\lesssim \max\left({(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha+1}}}, {(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha-1}}}\right).
 		\]
@@ -186,7 +186,7 @@
 		Let $g_r(t)=(1-t)^{r-\frac{2}{\alpha+1}-1}
 		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$ and $g(t)=(1-t)^{-\frac{2}{\alpha+1}-1}
 		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$. Since for each $r>0$, $g_r(t)\to g(t), r\to0$ pointwise
-		and $\abs{g_r(t)}<\abs{g(t)}$, we can use dominated convergence theorem. Follows
+		and $\abs{g_r(t)}<\abs{g(t)}$, we can use dominated convergence theorem. Thus
 		\begin{align*}
 			\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
@@ -222,11 +222,11 @@
 			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}
 			\right).
 		\end{align*}
-		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Follows
+		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Thus
 		\[
-		\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0.
+		\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0
 		\]
-		So the expression simplifies to
+		so the expression simplifies to
 		\begin{align*}
 			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
@@ -255,7 +255,7 @@
 		\[
 		\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
 		\]
-		Follows
+		Thus
 		\begin{align*}
 			\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
 			k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
@@ -297,7 +297,7 @@
 			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
 			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
 		\end{align*}
-		Follows
+		Thus
 		\begin{align*}
 			x^{\frac{1}{\alpha}}M\tilde{L}(\frac{x}{n})n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
 			&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\frac{2\alpha}{\alpha-1}\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\\
