@@ -11,50 +11,15 @@
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
-			\begin{axis}[
-				ymode=normal,
-				axis lines=left,
-				xlabel=$\log_{10}(x)$,
-				ylabel=$S(x)/n^2$,
-				ymin=0,
-				ymax=1,
-				]
-				\addplot[red, thick, domain=5:20] {0.8833193751};
-				\addplot[smooth] table{
-					5       0.635164
-					6       0.744875
-					7       0.800512
-					8       0.835948
-					9       0.854002
-					10      0.864869
-					11      0.871495
-					12      0.875614
-					13      0.878208
-					14      0.879908
-					15      0.881024
-					16      0.881774
-					17      0.882273
-					18      0.882609
-					19      0.882837
-				};
-				\node at (axis cs:6, 0.8833) [below, red] {$C(2)$};
-			\end{axis}
-			
-		\end{tikzpicture}
-		\caption{Where $f(x)=x^\alpha$, for different $\alpha$'s}
-	\end{figure}
-	
-	\begin{figure}
-		\centering
-		\begin{tikzpicture}
-			\begin{axis}[
-				ymode=normal,
-				axis lines=left,
-				xlabel=$\log_{10}(x)$,
-				ylabel=$S(x)/n^2$,
-				ymin=0,
-				ymax=1,
-				legend pos=south east,
+			\begin{axis}
+				[
+					ymode=normal,
+					axis lines=left,
+					xlabel=$\log_{10}(x)$,
+					ylabel=$\frac{S(x)}{n^2}$,
+					ymin=0,
+					ymax=1,
+					legend pos=south east,
 				]
 				\addplot[red, thick, domain=5:20] {0.655514388573};
 				\addlegendentry{$C(3)$}
@@ -118,40 +83,40 @@
 			\end{axis}
 			
 		\end{tikzpicture}
-		\caption{Where $f(x)=x^3$}
 	\end{figure}
 	
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
-			\begin{axis}[
-				ymode=normal,
-				axis lines=left,
-				xlabel=$\log_{10}(x)$,
-				ylabel=$\frac{S(x)}{C(\alpha)n^2}$,
-				ymin=0,
-				ymax=1,
-				legend pos=south east,
+			\begin{axis}
+				[
+					ymode=normal,
+					axis lines=left,
+					xlabel=$\log_{10}(x)$,
+					ylabel=$\frac{S(x)}{C(\alpha)n^2}$,
+					ymin=0,
+					ymax=1,
+					legend pos=south east,
 				]
 				\addplot[red, thick, domain=5:20] {1};
-				\addlegendentry{$C(2)$}
+				\addlegendentry{$1$}
 				\addplot[smooth, thick] table{
-					5 	 0.279586
-					6 	 0.404537
-					7 	 0.498704
-					8 	 0.566753
-					9 	 0.602608
-					10	 0.622818
-					11	 0.63592
-					12	 0.643569
-					13	 0.648045
-					14	 0.65099
-					15	 0.652635
-					16	 0.653749
-					17	 0.654374
-					18	 0.654807
-					19 	 0.655054
-					20	 0.655219
+					5 0.7190649474
+					6 0.8432680421
+					7 0.9062543204
+					8 0.9463711807
+					9 0.9668099942
+					10 0.9791124528
+					11 0.9866137034
+					12 0.991276796
+					13 0.9942134461
+					14 0.9961380048
+					15 0.997401421
+					16 0.9982504911
+					17 0.9988154056
+					18 0.999195789
+					19 0.9994539063
+					20 0.9996293808
 				};
 				\addlegendentry{$f(x)=x^2$}
 				\addplot[smooth, dashed, thick] table{
@@ -195,6 +160,5 @@
 			\end{axis}
 			
 		\end{tikzpicture}
-		\caption{Where $f(x)=x^3$}
 	\end{figure}
 \end{document}
