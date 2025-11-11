@@ -6,8 +6,30 @@
 \usepackage[thinc]{esdiff}
 \usepackage{commath}
 \usepackage{pgfplots}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
 
 \begin{document}
+	\begin{theorem}{(Potters Theorem)}
+		\begin{enumerate}[label=(\roman*)]
+			\item If $l$ is slowly varying function then for any chosen constants $A>1$, $\delta>0$ there exits $X=X(A, \delta)$ such that
+			\[
+			\frac{l(y)}{l(x)}\le A\max\left\{\left(\frac{y}{x}\right)^{\delta}, \left(\frac{x}{y}\right)^{\delta}\right\} \quad (x\ge X, y\ge X)
+			\]
+			
+			\item If further, $l$ is bounded away from $0$ and $\infty$ in every compact subset of $[0, \infty)$, then for every $\delta>0$ there exists $A'=A'(\delta)>1$ such that
+			\[
+			\frac{l(y)}{l(x)}\le A'\max\left\{\left(\frac{y}{x}\right)^{\delta}, \left(\frac{x}{y}\right)^{\delta}\right\} \quad (x\ge 0, y\ge 0)
+			\]
+			
+			\item If $f$ is regularly varying of index $\rho$ then for any chosen $A>1$, $\delta>0$ there exists $X=X(A, \delta)$ such that 
+			\[
+			\frac{f(y)}{f(x)}\le A\max\left\{\left(\frac{y}{x}\right)^{\rho+\delta}, \left(\frac{x}{y}\right)^{\rho+\delta}\right\} \quad (x\ge 0, y\ge 0)
+			\]
+		\end{enumerate}
+	\end{theorem}
+	
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
