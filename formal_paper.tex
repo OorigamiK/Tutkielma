@@ -54,25 +54,25 @@
 	\section{Notation}
 	\begin{itemize}
 		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions bounded away from $0$ and $\infty$ in any closed interval with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
-		\item Let $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$.
-		\item Let $s_k(x)=\#\{(i, j)\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$.
-		\item Let $\sim$ denote asymptotic equivalence. That is, 
-		\begin{align}
-		f(x)\sim g(x), x\to a\iff \lim_{x\to a} \frac{f(x)}{g(x)} = 1.
-		\end{align}
+		\item $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums below $x$.
+		\item $s_k(x)=\#\{(i, j)\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums of length $k$ below $x$.
+		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
 		We often omit the "$x\to a$" part, when it is clear from context.
-		\item Denote $f(x)\lesssim g(x) \iff \limsup\frac{f(x)}{g(x)}\le1$ and similarly 
-		\begin{align}
-		f(x)\gtrsim g(x) \iff \liminf\frac{f(x)}{g(x)}\ge1.
-		\end{align}
+		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
+		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
 		\item We denote sums of the form
 		\begin{align}
-		\sum_{x< i\le y} F(i)
+		\sum_{x\le i< y} F(i)
 		\end{align}
 		with
 		\begin{align}
 		\sum_{i=x}^{y} F(i).
 		\end{align}
+		\item $f(x)=O(g(x))$ – there exists $C>0$ such that $\abs{f(x)}\le Cg(x)$ for all sufficiently large $x$.
+		\item $f(x)=o(g(x))$ – shorthand for
+		\[
+		\lim_{x\to\infty} \frac{f(x)}{g(x)}=0
+		\]
 		
 	\end{itemize}
 	\section{Preliminaries}
@@ -80,7 +80,7 @@
 	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
 	\end{align}
-	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$, for some slowly varying function $L$.
+	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$.
 	
 	\begin{lemma}\label{sum f Asymp}
 		We have
@@ -97,7 +97,7 @@
 		\begin{align}
 		\sum_{i=n\epsilon}^{n} f(i)=\sum_{i=n\epsilon}^{n} i^\alpha L(i)
 		\end{align}
-		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
+		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or  Theorem~\ref{UCT} in the Appendix)
 		\begin{align}
 			\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\\
 			&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\\
@@ -133,7 +133,7 @@
 		\begin{align}
 		\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
 		\end{align}
-		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular}) and Lemma~\ref{sum f Asymp} %laita potter ja lemma 1 eri kohtiin
+		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular} or Theorem~\ref{PottersBound} in the Appendix) and Lemma~\ref{sum f Asymp} %laita potter ja lemma 1 eri kohtiin
 		\begin{align}
 			\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\\
 			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\\
@@ -143,7 +143,7 @@
 		\begin{align}
 		l\lesssim \max\left({(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha+1}}}, {(\frac{2}{\epsilon(\alpha+1)})^{\frac{1}{\alpha-1}}}\right).
 		\end{align}
-		Now $l$ and $k$ are bounded above and below, so  we can use uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular})
+		Now $l$ and $k$ are bounded above and below, so  we can use uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or Theorem~\ref{UCT} in the Appendix)
 		\begin{align}
 			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} i^\alpha L(n)\\
 			&=L(n)\sum_{i=nl}^{nk} i^\alpha\\
@@ -287,26 +287,54 @@
 	\end{proof}
 	
 	\section{case $\alpha<1$}
-	Moser's idea in \cite{Moser_1963} can be extended to case $\alpha<1$. The idea is that
+	Moser's idea in \cite{Moser_1963} can be extended to case $0<\alpha<1$. The idea is that
 	\begin{align}
 	f^{-1}(\frac{x}{k})-k\le s_k(x)\le f^{-1}(\frac{x}{k})
 	\end{align}
 	\begin{lemma}
 		We have following asymptotic
 		\begin{align}
-		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim 
+		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
 		\end{align}
+		where $x^{\frac{1}{\alpha}}\tilde{L}(x)$ is the asymptotic inverse of $f$.
 	\end{lemma}
 	\begin{proof}
-		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}, or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
 		\begin{align}
 		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \int_{1}^{n} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})
 		\end{align}
-		By Potter's bound
+		By doing change of variable $u=\frac{x}{t}$ we get
 		\begin{align}
-		\tilde{L}(\frac{x}{t})\le M\tilde{L}(\frac{x}{n})(\frac{n}{t})^{\delta},
+			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
 		\end{align}
-		where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(\frac{1}{\alpha}-1)$.
+		Using Karamata's theorem (see proposition 1.5.8 of \cite{bingham1987regular})
+		\begin{align}
+			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
+			&\sim
+			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}(\tilde{L}(x)-n^{1-\frac{1}{\alpha}}\tilde{L}(\frac{x}{n}))
+			\\
+			&\to \frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)\quad (n\to\infty)
+		\end{align} 
+		Since
+		\begin{align}
+			\frac{1}{\alpha}&>\frac{2}{\alpha+1}\\
+			\alpha&<1
+		\end{align}
+		it follows that $n^2=o(\sum_{i=1}^{n} f^{-1}(\frac{x}{i}))$. 
+		
+		By definition
+		\begin{align}
+			f^{-1}(f(n))=n\\
+			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
+			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
+		\end{align}
+		Thus
+		\begin{align}
+			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)
+			&\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}L(n)^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{n})\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}\\
+			&\sim
+			\frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
+		\end{align}
 	\end{proof}
  
 	\section{Case $\alpha>1$}
@@ -318,7 +346,7 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Clearly $s_i(x)\le f^{-1}(\frac{x}{i})$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		Clearly $s_i(x)\le f^{-1}(\frac{x}{i})$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
 		\begin{align}
 		\sum_{i=1}^{n\epsilon} f^{-1}(\frac{x}{i})\sim  \int_{1}^{n\epsilon} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})dt
 		\end{align}
@@ -361,7 +389,7 @@
 		\end{align}
 		Splitting the sum
 		\begin{align}
-		S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x)
+		S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x).
 		\end{align}
 		Using lemma~\ref{head's neglible} we can control the first sum, so we will focus on the second sum. Using lemma~\ref{s asymp} we get
 		\begin{align}

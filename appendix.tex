@@ -5,13 +5,21 @@
 \usepackage{cleveref}
 \usepackage[thinc]{esdiff}
 \usepackage{commath}
+\usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{enumitem}
+\usepackage{float}
 
 \newtheorem{theorem}{Theorem}
 
 \begin{document}
-	\begin{theorem}{(Uniform Convergence Theorem)}
+	\appendix
+	\section*{Appendix: Selected Results on Regular Variation}
+	
+	For convenience, we reproduce several standard theorems from
+	\cite{bingham1987regular}.
+	
+	\begin{theorem}[Uniform Convergence Theorem]\label{UCT}
 		If $l$ is slowly varying then
 		\[
 		\frac{l(\lambda x)}{l(x)}\to 1\quad (x\to \infty)
@@ -19,9 +27,9 @@
 		uniformly in each compact $\lambda\text{-set}$ in $(0, \infty)$.
 	\end{theorem}
 	
-	\begin{theorem}{(Potters Theorem)}
+	\begin{theorem}[Potters Theorem]\label{PottersBound}
 		\begin{enumerate}[label=(\roman*)]
-			\item If $l$ is slowly varying function then for any chosen constants $A>1$, $\delta>0$ there exits $X=X(A, \delta)$ such that
+			\item If $l$ is slowly varying function then for any chosen constants $A>1$, $\delta>0$ there exists $X=X(A, \delta)$ such that
 			\[
 			\frac{l(y)}{l(x)}\le A\max\left\{\left(\frac{y}{x}\right)^{\delta}, \left(\frac{x}{y}\right)^{\delta}\right\} \quad (x\ge X, y\ge X)
 			\]
@@ -33,12 +41,21 @@
 			
 			\item If $f$ is regularly varying of index $\rho$ then for any chosen $A>1$, $\delta>0$ there exists $X=X(A, \delta)$ such that 
 			\[
-			\frac{f(y)}{f(x)}\le A\max\left\{\left(\frac{y}{x}\right)^{\rho+\delta}, \left(\frac{x}{y}\right)^{\rho+\delta}\right\} \quad (x\ge 0, y\ge 0)
+			\frac{f(y)}{f(x)}\le A\max\left\{\left(\frac{y}{x}\right)^{\rho+\delta}, \left(\frac{x}{y}\right)^{\rho+\delta}\right\} \quad (x\ge X, y\ge X)
 			\]
 		\end{enumerate}
 	\end{theorem}
 	
-	\begin{figure}
+	\begin{theorem}\label{RVinverse}
+		If $f\in RV_\alpha$ with $\alpha>0$, there exits $g\in RV_{\frac{1}{\alpha}}$ with 
+		\[
+		f(g(x))\sim g(f(x))\sim x\quad (x\to \infty).
+		\]
+		Here $g$ (an asymptotic inverse of $f$) is determined uniquely to within asymptotic equivalence.
+	\end{theorem}
+	
+	\section*{Figures on convergence}
+	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
 			\begin{axis}
@@ -113,11 +130,11 @@
 			\end{axis}
 			
 		\end{tikzpicture}
-		\caption{Example on how the slowly varying part affects convergence}
+		\caption{Example of how the slowly varying part affects convergence}
 		\label{SVeffectsOnConvergence}
 	\end{figure}
 	
-	\begin{figure}
+	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
 			\begin{axis}
@@ -192,7 +209,10 @@
 			\end{axis}
 			
 		\end{tikzpicture}
-		\caption{Example on how the index affects convergence}
+		\caption{Example of how the index affects convergence}
 		\label{indexEffectsOnConvergence}
 	\end{figure}
+	
+	\bibliographystyle{plain}
+	\bibliography{references}
 \end{document}
