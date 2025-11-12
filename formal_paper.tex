@@ -25,11 +25,11 @@
 		In this paper we extend the paper of O'Sullivan et al. on block sums of prime powers to regularly varying functions under mild additional assumptions. We find an exact asymptotic for the number of block sums below $x$. This paper applies tools from the theory of regularly varying functions and relates the number of blocks of length $i$ to $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
 	\end{abstract}
 	\section{Introduction}
-	Determining the asymptotic behavior of the count of block sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown. In this paper we find asymptotic formula for class of regularly varying sequences, that satisfies certain mild assumptions. The exact assumptions are given below.
+	Determining the asymptotic behavior of the count of block sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown. In this paper we find asymptotic formula for class of regularly varying sequences, that are bounded away from 0 and $\infty$ in every closed interval and eventually monotonic with index $\alpha\neq 1, \alpha>0$.
 	
-	Our main theorem provides an asymptotic for
+	Our main theorem provides an asymptotic for the block sum counting function
 	\begin{align}
-	S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}.
+	S(x)=\#\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}.
 	\end{align}
 	That is 
 	\begin{align}
@@ -49,12 +49,12 @@
 	which allows us to calculate the exact coefficient in the asymptotic.
 	
 	
-	This paper is organized as follows. Section 2 is on notation. Section 3 first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section 4 proves the theorem 1 and one technical lemma bounding sum of $s_i$ for small $i$'s.
+	This paper is organized as follows. Section \ref{notation} is on notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section \ref{minorTheorem} deals with the case $\alpha<1$ adapting Mosers idea in \cite{Moser_1963}.Section \ref{mainTheorem} proves the theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding sum of $s_i$ for small $i$'s.
 	
-	\section{Notation}
+	\section{Notation}\label{notation}
 	\begin{itemize}
 		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions bounded away from $0$ and $\infty$ in any closed interval with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
-		\item $S(x)=\#\{(i, j)\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums below $x$.
+		\item $S(x)=\#\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums below $x$.
 		\item $s_k(x)=\#\{(i, j)\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums of length $k$ below $x$.
 		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
 		We often omit the "$x\to a$" part, when it is clear from context.
@@ -62,7 +62,7 @@
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
 		\item We denote sums of the form
 		\begin{align}
-		\sum_{x\le i< y} F(i)
+		\sum_{x\le i< y+1} F(i)
 		\end{align}
 		with
 		\begin{align}
@@ -75,7 +75,8 @@
 		\]
 		
 	\end{itemize}
-	\section{Preliminaries}
+	
+	\section{Preliminaries}\label{preliminaries}
 	We assume throughout this paper that $n=n(x)$ is the unique integer satisfying
 	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
@@ -285,59 +286,8 @@
 		s_i(x) = nl\sim n\phi^{-1}(\frac{i}{n}).
 		\end{align}
 	\end{proof}
-	
-	\section{case $\alpha<1$}
-	Moser's idea in \cite{Moser_1963} can be extended to case $0<\alpha<1$. The idea is that
-	\begin{align}
-	f^{-1}(\frac{x}{k})-k\le s_k(x)\le f^{-1}(\frac{x}{k})
-	\end{align}
-	\begin{lemma}
-		We have following asymptotic
-		\begin{align}
-		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
-		\end{align}
-		where $x^{\frac{1}{\alpha}}\tilde{L}(x)$ is the asymptotic inverse of $f$.
-	\end{lemma}
-	\begin{proof}
-		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}, or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
-		\begin{align}
-		\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \int_{1}^{n} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})
-		\end{align}
-		By doing change of variable $u=\frac{x}{t}$ we get
-		\begin{align}
-			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
-		\end{align}
-		Using Karamata's theorem (see proposition 1.5.8 of \cite{bingham1987regular})
-		\begin{align}
-			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
-			&\sim
-			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}(\tilde{L}(x)-n^{1-\frac{1}{\alpha}}\tilde{L}(\frac{x}{n}))
-			\\
-			&\to \frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)\quad (n\to\infty)
-		\end{align} 
-		Since
-		\begin{align}
-			\frac{1}{\alpha}&>\frac{2}{\alpha+1}\\
-			\alpha&<1
-		\end{align}
-		it follows that $n^2=o(\sum_{i=1}^{n} f^{-1}(\frac{x}{i}))$. 
-		
-		By definition
-		\begin{align}
-			f^{-1}(f(n))=n\\
-			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
-			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
-		\end{align}
-		Thus
-		\begin{align}
-			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)
-			&\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}L(n)^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{n})\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}\\
-			&\sim
-			\frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
-		\end{align}
-	\end{proof}
  
-	\section{Case $\alpha>1$}
+	\section{Case $\alpha>1$}\label{mainTheorem}
 	\begin{lemma}\label{head's neglible}
 		Let $\epsilon>0$ and $\alpha>1$ then 
 		\begin{align}
@@ -361,7 +311,7 @@
 		\end{align}
 		By definition
 		\begin{align}
-			f^{-1}(f(n))=n\\
+			f^{-1}(f(n))\sim n\\
 			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
 			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
 		\end{align}
@@ -373,7 +323,7 @@
 		\end{align}		
 	\end{proof}
 	
-	\begin{theorem}
+	\begin{theorem}\label{BlockSumsforAlphaGr1}
 		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where 
 		\begin{align}
 		C(\alpha)=\frac{1}{2(\alpha+1)}
@@ -419,6 +369,57 @@
 			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt<n^2C(\alpha).
 		\end{align}
 		Combining this and bound from Lemma~\ref{head's neglible} the Theorem follows.
+	\end{proof}
+	
+	\section{case $\alpha<1$}\label{minorTheorem}
+	Moser's idea in \cite{Moser_1963} can be extended to case $0<\alpha<1$. The idea is that
+	\begin{align}
+		f^{-1}\left(\frac{x}{k}\right)-k\le s_k(x)\le f^{-1}\left(\frac{x}{k}\right).
+	\end{align}
+	\begin{theorem}
+		We have following asymptotic
+		\begin{align}
+			S(x)\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
+		\end{align}
+		where $x^{\frac{1}{\alpha}}\tilde{L}(x)$ is the asymptotic inverse of $f$ and $f\in RV_\alpha^+$ with $0<\alpha<1$.
+	\end{theorem}
+	\begin{proof}
+		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}, or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		\begin{align}
+			\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \int_{1}^{n} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})
+		\end{align}
+		By doing change of variable $u=\frac{x}{t}$ we get
+		\begin{align}
+			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
+		\end{align}
+		Using Karamata's theorem (see proposition 1.5.8 of \cite{bingham1987regular})
+		\begin{align}
+			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
+			&\sim
+			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}(\tilde{L}(x)-n^{1-\frac{1}{\alpha}}\tilde{L}(\frac{x}{n}))
+			\\
+			&\to \frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)\quad (n\to\infty)
+		\end{align} 
+		Since
+		\begin{align}
+			\frac{1}{\alpha}&>\frac{2}{\alpha+1}\\
+			\alpha&<1
+		\end{align}
+		it follows that $n^2=o(\sum_{i=1}^{n} f^{-1}(\frac{x}{i}))$. 
+		
+		By definition
+		\begin{align}
+			f^{-1}(f(n))\sim n\\
+			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
+			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
+		\end{align}
+		Thus
+		\begin{align}
+			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)
+			&\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}L(n)^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{n})\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}\\
+			&\sim
+			\frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
+		\end{align}
 	\end{proof}
 	
 	\section{Empirical Convergence of Asymptotic Formula}
