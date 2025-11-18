@@ -9,6 +9,7 @@
 \usepackage{pgfplots}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage{comment}
 
 \newtheorem{theorem}{Theorem}
 
@@ -212,6 +213,32 @@
 		\caption{Example of how the index affects convergence}
 		\label{indexEffectsOnConvergence}
 	\end{figure}
+	\begin{comment}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[every node/.style={font=\small}]
+			
+			% sequence elements
+			\node (a1) at (0,0)  {$a_1$};
+			\node (a2) at (1,0)  {$a_2$};
+			\node (a3) at (2,0)  {$a_3$};
+			\node (a4) at (3,0)  {$a_4$};
+			\node (a5) at (4,0)  {$a_5$};
+			\node (dots) at (5,0)  {$\cdots$};
+			
+			% box around a2, a3, a4 (the consecutive block)
+			\draw[rounded corners, thick]
+			(0.6,-0.5) rectangle (3.4,0.5);
+			
+			% label
+			\node at (2,-1) {$a_2 + a_3 + a_4\le x$};
+			
+			% arrow to the sum
+			\draw[->, thick] (2,-0.5) -- (2,-0.8);
+			
+		\end{tikzpicture}
+	\end{figure}
+	\end{comment}
 	
 	\bibliographystyle{plain}
 	\bibliography{references}

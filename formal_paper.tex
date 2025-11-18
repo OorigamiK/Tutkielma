@@ -49,7 +49,7 @@
 	which allows us to calculate the exact coefficient in the asymptotic.
 	
 	
-	This paper is organized as follows. Section \ref{notation} is on notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section \ref{minorTheorem} deals with the case $\alpha<1$ adapting Mosers idea in \cite{Moser_1963}.Section \ref{mainTheorem} proves the theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding sum of $s_i$ for small $i$'s.
+	This paper is organized as follows. Section \ref{notation} is on notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding sum of $s_i$ for small $i$'s.
 	
 	\section{Notation}\label{notation}
 	\begin{itemize}
@@ -62,7 +62,7 @@
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
 		\item We denote sums of the form
 		\begin{align}
-		\sum_{x\le i< y+1} F(i)
+		\sum_{x\le i< y} F(i)
 		\end{align}
 		with
 		\begin{align}
@@ -369,57 +369,6 @@
 			n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt<n^2C(\alpha).
 		\end{align}
 		Combining this and bound from Lemma~\ref{head's neglible} the Theorem follows.
-	\end{proof}
-	
-	\section{case $\alpha<1$}\label{minorTheorem}
-	Moser's idea in \cite{Moser_1963} can be extended to case $0<\alpha<1$. The idea is that
-	\begin{align}
-		f^{-1}\left(\frac{x}{k}\right)-k\le s_k(x)\le f^{-1}\left(\frac{x}{k}\right).
-	\end{align}
-	\begin{theorem}
-		We have following asymptotic
-		\begin{align}
-			S(x)\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
-		\end{align}
-		where $x^{\frac{1}{\alpha}}\tilde{L}(x)$ is the asymptotic inverse of $f$ and $f\in RV_\alpha^+$ with $0<\alpha<1$.
-	\end{theorem}
-	\begin{proof}
-		Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 in \cite{bingham1987regular}, or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
-		\begin{align}
-			\sum_{i=1}^{n} f^{-1}(\frac{x}{i})\sim \int_{1}^{n} f^{-1}(\frac{x}{t})dt=x^{\frac{1}{\alpha}}\int_{1}^{n} t^{-\frac{1}{\alpha}}\tilde{L}(\frac{x}{t})
-		\end{align}
-		By doing change of variable $u=\frac{x}{t}$ we get
-		\begin{align}
-			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
-		\end{align}
-		Using Karamata's theorem (see proposition 1.5.8 of \cite{bingham1987regular})
-		\begin{align}
-			x\int_{\frac{x}{n}}^{x} u^{\frac{1}{\alpha}-2} \tilde{L}(u)du
-			&\sim
-			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}(\tilde{L}(x)-n^{1-\frac{1}{\alpha}}\tilde{L}(\frac{x}{n}))
-			\\
-			&\to \frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)\quad (n\to\infty)
-		\end{align} 
-		Since
-		\begin{align}
-			\frac{1}{\alpha}&>\frac{2}{\alpha+1}\\
-			\alpha&<1
-		\end{align}
-		it follows that $n^2=o(\sum_{i=1}^{n} f^{-1}(\frac{x}{i}))$. 
-		
-		By definition
-		\begin{align}
-			f^{-1}(f(n))\sim n\\
-			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
-			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
-		\end{align}
-		Thus
-		\begin{align}
-			\frac{\alpha}{1-\alpha}x^{\frac{1}{\alpha}}\tilde{L}(x)
-			&\sim \frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}L(n)^{\frac{1}{\alpha}}\tilde{L}(\frac{x}{n})\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}\\
-			&\sim
-			\frac{\alpha}{(1-\alpha)(\alpha+1)^{\frac{1}{\alpha}}}n^{1+\frac{1}{\alpha}}\frac{\tilde{L}(x)}{\tilde{L}(\frac{x}{n})}
-		\end{align}
 	\end{proof}
 	
 	\section{Empirical Convergence of Asymptotic Formula}
