@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[10pt]{article}
 \usepackage{amsmath, amssymb, amsthm, url, hyperref}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -7,13 +7,16 @@
 \usepackage{commath}
 \usepackage{xr-hyper}
 \externaldocument{appendix}
+\linespread{2}
+\usepackage[margin=25mm]{geometry}
+
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
 
-\title{Asymptotic Behavior of the Number of Block Sums}
-\author{Ohto Katila}
-\date{\today}
+\title{Asymptotic Behavior of the Number of Interval Sums}
+%\author{Ohto Katila}
+%\date{\today}
 
 
 \let\epsilon\varepsilon
@@ -22,18 +25,19 @@
 	\maketitle
 
 	\begin{abstract}
-		In this paper we extend the paper of O'Sullivan et al. on block sums of prime powers to regularly varying functions under mild additional assumptions. We find an exact asymptotic for the number of block sums below $x$. This paper applies tools from the theory of regularly varying functions and relates the number of blocks of length $i$ to $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+		In this paper we extend the results of O'Sullivan et al. on interval sums of prime powers to regularly varying functions that are eventually monotonic and locally bounded away from $0$ and $\infty$. We find the implicit asymptotic for the number of interval sums below $x$. Our approach relies on approximating the number of fixed length interval sums using the function $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ that comes naturally from inverting the asymptotic relation. A negligible contribution comes from the number of interval sums of small length, allowing us to obtain the full asymptotic.
 	\end{abstract}
-	\section{Introduction}
-	Determining the asymptotic behavior of the count of block sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown. In this paper we find asymptotic formula for class of regularly varying sequences, that are bounded away from 0 and $\infty$ in every closed interval and eventually monotonic with index $\alpha\neq 1, \alpha>0$.
 	
-	Our main theorem provides an asymptotic for the block sum counting function
+	\section{Introduction}
+	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown to our knowledge. In this paper we find an asymptotic formula for a class of sequences. We study the sequences $(f(i))_{i=1}^{\infty}$, where $f$ is locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
+	
+	Our main theorem provides an asymptotic for the interval sum counting function
 	\begin{align}
 	S(x)=\#\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}.
 	\end{align}
-	That is 
+	That is, we have
 	\begin{align}
-	S(x)\sim n^2C(\alpha), n\to\infty
+	S(x)\sim n^2C(\alpha), n=n(x)\to\infty
 	\end{align}
 	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
 	\begin{align}
@@ -42,31 +46,31 @@
 	\end{align} 
 	for a regularly varying function $f$ with index $\alpha>1$ that satisfies certain assumptions.
 	
-	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into sum of $s_i$ that count the number of blocks of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of 
+	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of 
 	\begin{align}
 	\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}
 	\end{align} 
 	which allows us to calculate the exact coefficient in the asymptotic.
 	
 	
-	This paper is organized as follows. Section \ref{notation} is on notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then lemma that calculates $\phi$'s inverses integral and finally lemma that relates $\phi$ and $s_i$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding sum of $s_i$ for small $i$'s.
+	This paper is organized as follows. Section \ref{notation} is on notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then lemma that calculates the integral of the inverse of $\phi$, and finally lemma that relates $\phi$ and $s_i$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding sum of $s_i$ for small $i$'s.
 	
 	\section{Notation}\label{notation}
 	\begin{itemize}
-		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions bounded away from $0$ and $\infty$ in any closed interval with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
-		\item $S(x)=\#\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums below $x$.
-		\item $s_k(x)=\#\{(i, j)\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of block sums of length $k$ below $x$.
+		\item Let $RV_\alpha^+$ denote eventually monotonic regularly varying functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
+		\item $S(x)=\#\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of interval sums below $x$.
+		\item $s_k(x)=\#\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\}$ – the number of 	interval sums of length $k$ below $x$.
 		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
 		We often omit the "$x\to a$" part, when it is clear from context.
 		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
 		\item We denote sums of the form
 		\begin{align}
-		\sum_{x\le i< y} F(i)
+			\sum_{i=x}^{y} F(i).
 		\end{align}
 		with
 		\begin{align}
-		\sum_{i=x}^{y} F(i).
+			\sum_{x\le i< y} F(i)
 		\end{align}
 		\item $f(x)=O(g(x))$ – there exists $C>0$ such that $\abs{f(x)}\le Cg(x)$ for all sufficiently large $x$.
 		\item $f(x)=o(g(x))$ – shorthand for
@@ -281,13 +285,13 @@
 			i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
 			ln&\sim n\phi^{-1}(\frac{i}{n}).
 		\end{align}
-		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of blocks whose sum is less than $x$ of length $i$, we get
+		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of intervals whose sum is less than $x$ of length $i$, we get
 		\begin{align}
 		s_i(x) = nl\sim n\phi^{-1}(\frac{i}{n}).
 		\end{align}
 	\end{proof}
  
-	\section{Case $\alpha>1$}\label{mainTheorem}
+	\section{Proof of the Main Theorem}\label{mainTheorem}
 	\begin{lemma}\label{head's neglible}
 		Let $\epsilon>0$ and $\alpha>1$ then 
 		\begin{align}
@@ -380,7 +384,7 @@
 	These findings align with our analysis: the proofs rely on uniform convergence theorem which gives slower convergence for larger growth rates and the sum's asymptotic to integral has slower convergence for larger indices.
 	
 	\section{Conclusion}
-	The main theorem gives asymptotic for number of block sums below $x$. It remains open question what happens in the case $\alpha\le 1$. Future work could refine the result by dropping assumptions or investigating a different class of functions. The result may have applications in additive and analytic number theory.
+	The main theorem gives asymptotic for number of interval sums below $x$, that is $S(x)\sim C(\alpha)n^2$. It remains open question what happens in the case $\alpha\le 1$. Future work could refine the result by dropping assumptions or by investigating a different class of functions. The result may have applications in additive and analytic number theory.
 	
 	
 	\bibliographystyle{plain}
