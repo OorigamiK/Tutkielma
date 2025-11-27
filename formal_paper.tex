@@ -13,6 +13,7 @@
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 
 \title{Asymptotic Behavior of the Number of Interval Sums}
 \author{Ohto Katila}
@@ -57,7 +58,7 @@
 	
 	\section{Notation}\label{notation}
 	\begin{itemize}
-		\item $RV_\alpha^+$ – eventually monotonic regularly varying functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
+		\item $RV_\alpha^+$ – measurable, eventually monotonic regularly varying (see definition~\ref{RV_def} or \cite{bingham1987regular}) functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}). We assume the domain and range are $\mathbb{R}_{>0}$.
 		\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
 		\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
 		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
@@ -81,11 +82,28 @@
 	\end{itemize}
 	
 	\section{Preliminaries}\label{preliminaries}
+	
+	\begin{definition}\label{RV_def}
+		Function $f\colon\mathbb{R}_{>0}\to\mathbb{R}_{>0}$ is regularly varying with index $\alpha$ if for all $\lambda>0$
+		\begin{align}
+			\lim_{x\to\infty}\frac{f(\lambda x)}{f(x)}=\lambda^\alpha.
+		\end{align}
+	\end{definition}
+	
+	\begin{definition}\label{SV_def}
+		Function $L\colon\mathbb{R}_{>0}\to\mathbb{R}_{>0}$ is slowly varying if for all $\lambda>0$
+		\begin{align}
+			\lim_{x\to\infty}\frac{L(\lambda x)}{L(x)}=1.	
+		\end{align}
+	\end{definition}
+	
 	We assume throughout this paper that $n=n(x)$ is the unique integer satisfying
 	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
 	\end{align}
 	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$.
+	
+
 	
 	\begin{lemma}\label{sum f Asymp}
 		We have
@@ -200,10 +218,8 @@
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\\
 			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
-			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
 		\end{align}
-		
-		
 		
 		Let $g_r(t)=(1-t)^{r-\frac{2}{\alpha+1}-1}
 		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$ and $g(t)=(1-t)^{-\frac{2}{\alpha+1}-1}
@@ -215,7 +231,6 @@
 			=\lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
 			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
 		\end{align}
-		
 		Let $B$ be the beta function (see NIST DLMF § 5.12.1 \cite{NIST:DLMF})
 		\begin{align}
 		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
@@ -300,9 +315,9 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Clearly $s_i(x)\le f^{-1}\left(\frac{x}{i}\right)$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$.
+		Clearly $s_i(x)\le f^{-1}\left(\frac{x}{i}\right)$. Regularly varying functions inverse is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
 		\begin{align}
-		\sum_{i=1}^{n\epsilon} f^{-1}\left(\frac{x}{i}\right)\sim  \int_{1}^{n\epsilon} f^{-1}\left(\frac{x}{t}\right)dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt
+		\sum_{i=1}^{n\epsilon} f^{-1}\left(\frac{x}{i}\right)\sim  \int_{1}^{n\epsilon} f^{-1}\left(\frac{x}{t}\right)dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt.
 		\end{align}
 		By Potter's bound
 		\begin{align}
@@ -328,12 +343,11 @@
 	\end{proof}
 	
 	\begin{theorem}\label{BlockSumsforAlphaGr1}
-		The function $S(x)$ has asymptotic $C(\alpha)n^2$, where 
+		The function $S(x)$ has asymptotic $C(\alpha)n^2$ for $\alpha>1$, where 
 		\begin{align}
-		C(\alpha)=\frac{1}{2(\alpha+1)}
-		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
+			C(\alpha)=\frac{1}{2(\alpha+1)}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
 		\end{align}
-		For $\alpha>1$.
 	\end{theorem}
 	
 	\begin{proof}
@@ -384,7 +398,7 @@
 	These findings align with our analysis: the proofs rely on uniform convergence theorem which gives slower convergence for larger growth rates and the sum's asymptotic to integral has slower convergence for larger indices.
 	
 	\section{Conclusion}
-	The main theorem gives asymptotic for number of interval sums below $x$, that is $S(x)\sim C(\alpha)n^2$. It remains open question what happens in the case $\alpha\le 1$. Future work could refine the result by dropping assumptions or by investigating a different class of functions. The result may have applications in additive and analytic number theory.
+	The main theorem gives asymptotic for number of interval sums below $x$, that is $S(x)\sim C(\alpha)n^2$. It remains open question what happens in the case $\alpha\le 1$, our methods can't handle that case since the integral in lemma~\ref{phi integral} diverges. Future work could refine the result by dropping assumptions or by investigating a different class of functions. The result may have applications in additive and analytic number theory.
 	
 	
 	\bibliographystyle{plain}
