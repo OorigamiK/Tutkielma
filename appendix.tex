@@ -12,6 +12,7 @@
 \usepackage{comment}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
 
 \begin{document}
 	\appendix
@@ -46,6 +47,19 @@
 			\]
 		\end{enumerate}
 	\end{theorem}
+	\begin{proof}
+		See Theorem 1.5.6 in \cite{bingham1987regular}.
+	\end{proof}
+	
+	\begin{proposition}[Karamata's Theorem (direct half)]\label{karamata}
+		If $l$ is measurable slowly varying, X is so large that $l(x)$ is locally bounded in $[X, \infty)$, and $\alpha>-1$, then
+		\[
+			\int_{X}^{x} t^\alpha l(t)dt\sim \frac{x^{\alpha+1}l(x)}{\alpha+1}\quad (x\to\infty)
+		\]
+	\end{proposition}
+	\begin{proof}
+		See Proposition 1.5.8 in \cite{bingham1987regular}.
+	\end{proof}
 	
 	\begin{theorem}\label{RVinverse}
 		If $f\in RV_\alpha$ with $\alpha>0$, there exits $g\in RV_{\frac{1}{\alpha}}$ with 
@@ -54,6 +68,9 @@
 		\]
 		Here $g$ (an asymptotic inverse of $f$) is determined uniquely to within asymptotic equivalence.
 	\end{theorem}
+	\begin{proof}
+		See theorem 1.5.12 in \cite{bingham1987regular}.
+	\end{proof}
 	
 	\section*{Figures on convergence}
 	\begin{figure}[H]

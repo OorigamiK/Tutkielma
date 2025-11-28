@@ -9,6 +9,7 @@
 \externaldocument{appendix}
 \linespread{2}
 \usepackage[margin=25mm]{geometry}
+\usepackage{comment}
 
 
 \newtheorem{lemma}{Lemma}
@@ -110,39 +111,14 @@
 		\begin{align}
 		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}=\frac{nf(n)}{\alpha+1}
 		\end{align}
+		for $\alpha>-1$.
 	\end{lemma}
 	\begin{proof}
-		Let $\epsilon>0$ and split the sum
-		\begin{align}
-		\sum_{i=1}^{n} f(i)=\sum_{i=1}^{n\epsilon} f(i)+\sum_{i=n\epsilon}^{n} f(i).
-		\end{align}
-		We will first examine the second sum.
-		\begin{align}
-		\sum_{i=n\epsilon}^{n} f(i)=\sum_{i=n\epsilon}^{n} i^\alpha L(i)
-		\end{align}
-		Using uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or  Theorem~\ref{UCT} in the Appendix)
-		\begin{align}
-			\sum_{i=n\epsilon}^{n} i^\alpha L(i)&\sim L(n)\sum_{i=n\epsilon}^{n} i^\alpha\\
-			&\sim L(n)\int_{n\epsilon}^{n} t^\alpha dt\\
-			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(1-\epsilon^{\alpha+1})
-		\end{align}
-		Examining the first sum
-		\begin{align}
-		\sum_{i=1}^{n\epsilon} f(i)<n\epsilon f(n\epsilon).
-		\end{align}
-		Since $f$ is eventually increasing
-		\begin{align}
-		n\epsilon f(n\epsilon)< n\epsilon f(n)=\epsilon n^{\alpha+1}L(n).
-		\end{align}
-		Combining these we get
-		\begin{align}
-			\frac{1}{\alpha+1}n^{\alpha+1}L(n)(1-\epsilon^{\alpha+1})\lesssim\sum_{i=1}^{n} f(i)&\lesssim \frac{1}{\alpha+1}n^{\alpha+1}L(n)(1+\epsilon(\alpha+1)-\epsilon^{\alpha+1})\\
-			\sum_{i=1}^{n} f(i)&\sim \frac{1}{\alpha+1}n^{\alpha+1}L(n)
-		\end{align}
+		This is direct consequence of Karamata's theorem (see proposition 1.5.8 in \cite{bingham1987regular} or Proposition~\ref{karamata} in the appendix).
 	\end{proof}
 	
 	\begin{lemma}\label{sum f range asymp}
-		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If 
+		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If $\alpha>-1$ and
 		\begin{align}
 		\sum_{i=nl}^{nk} f(i)<x
 		\end{align} 
