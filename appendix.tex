@@ -13,13 +13,14 @@
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
 
 \begin{document}
 	\appendix
 	\section*{Appendix: Selected Results on Regular Variation}
 	
 	For convenience, we reproduce several standard theorems from
-	\cite{bingham1987regular}.
+	\cite{bingham1987regular} we assume through this section that $f$ and $l$ is measurable.
 	
 	\begin{theorem}[Uniform Convergence Theorem]\label{UCT}
 		If $l$ is slowly varying then
@@ -52,7 +53,7 @@
 	\end{proof}
 	
 	\begin{proposition}[Karamata's Theorem (direct half)]\label{karamata}
-		If $l$ is measurable slowly varying, X is so large that $l(x)$ is locally bounded in $[X, \infty)$, and $\alpha>-1$, then
+		If $l$ is slowly varying, X is so large that $l(x)$ is locally bounded in $[X, \infty)$, and $\alpha>-1$, then
 		\[
 			\int_{X}^{x} t^\alpha l(t)dt\sim \frac{x^{\alpha+1}l(x)}{\alpha+1}\qquad (x\to\infty)
 		\]
@@ -61,12 +62,19 @@
 		See Proposition 1.5.8 in \cite{bingham1987regular}.
 	\end{proof}
 	
+	\begin{definition}[Generalized inverse]
+		Generalized inverse of $f$ is defined by
+		\begin{align}
+			f^{\leftarrow}(x)=\inf\left\{x\mid f(x)=y\right\}
+		\end{align}
+	\end{definition}
+	
 	\begin{theorem}\label{RVinverse}
 		If $f\in RV_\alpha$ with $\alpha>0$, there exits $g\in RV_{\frac{1}{\alpha}}$ with 
 		\[
 		f(g(x))\sim g(f(x))\sim x\qquad (x\to \infty).
 		\]
-		Here $g$ (an asymptotic inverse of $f$) is determined uniquely to within asymptotic equivalence.
+		Here $g$ (an asymptotic inverse of $f$) is determined uniquely to within asymptotic equivalence, and one version of g is $f^{\leftarrow}$.
 	\end{theorem}
 	\begin{proof}
 		See theorem 1.5.12 in \cite{bingham1987regular}.

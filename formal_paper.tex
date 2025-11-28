@@ -27,11 +27,11 @@
 	\maketitle
 
 	\begin{abstract}
-		In this paper we extend the results of O'Sullivan et al. on interval sums of prime powers to the broader class of regularly varying functions that are eventually monotonic and locally bounded away from $0$ and $\infty$. We find the asymptotic formula for the number of interval sums below $x$. Our approach relies on approximating the number of fixed length interval sums using the function $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ that comes naturally from inverting the asymptotic relation. A negligible contribution comes from the number of interval sums of small length, allowing us to obtain the full asymptotic. This extends previous results and, in certain cases makes them more precise.
+		In this paper we extend the results of O'Sullivan et al. on interval sums of prime powers to the broader class of regularly varying functions that are measurable, eventually monotonic and locally bounded away from $0$ and $\infty$. We find the asymptotic formula for the number of interval sums below $x$. Our approach relies on approximating the number of fixed length interval sums using the function $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ that comes naturally from inverting the asymptotic relation. A negligible contribution comes from the number of interval sums of small length, allowing us to obtain the full asymptotic. This extends previous results and, in certain cases makes them more precise.
 	\end{abstract}
 	
 	\section{Introduction}
-	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown to our knowledge. In this paper we find an asymptotic formula for a class of sequences. We study the sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This generalizes previous findings.
+	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. However the asymptotic for more general sequences remains unknown to our knowledge. In this paper we find an asymptotic formula for a class of sequences. We study the sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This generalizes previous findings.
 	
 	Our main theorem provides an asymptotic for the interval sum counting function
 	\begin{align}
@@ -63,7 +63,7 @@
 		\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
 		\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
 		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
-		We often omit the "$x\to a$" part, when it is clear from context.
+		We often omit the "$x\to a$" part, when it is clear from context, usually.
 		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
 		\item We denote sums of the form
@@ -102,7 +102,7 @@
 	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
 	\end{align}
-	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$.
+	where $f\in RV_\alpha^+$ that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$. That is $n$ is the length of the largest interval. 
 	
 
 	
@@ -118,11 +118,11 @@
 	\end{proof}
 	
 	\begin{lemma}\label{sum f range asymp}
-		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If $\alpha>-1$ and
+		Let $\epsilon>0$ given $k,l>0$ such that $k-l>\epsilon$. If $\alpha>1$ and
 		\begin{align}
 		\sum_{i=nl}^{nk} f(i)<x
 		\end{align} 
-		then
+		then uniformly in $k$ and $l$
 		\begin{align}
 		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
 		\end{align}
@@ -149,6 +149,7 @@
 			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\\
 			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
 		\end{align}
+		Since the uniform convergence theorem applies uniformly this asymptotic converges also uniformly.
 	\end{proof}
 	
 	\begin{lemma}\label{phi integral}
@@ -180,7 +181,7 @@
 		Doing change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$. We get
 		\begin{align}
 		dx=\frac{1}{\alpha+1}\left(\frac{t}{1-t}\right)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt.
-		\end{align}
+		\end{align}	
 		Changing $\phi(x)$ to $t$ terms \\
 		\begin{align}
 			\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x  \\
@@ -286,6 +287,7 @@
 		\begin{align}
 		\sum_{i=1}^{n\epsilon} s_i(x)=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}.
 		\end{align}
+		Where $O(n^2)$ is independent of $\epsilon$.
 	\end{lemma}
 	
 	\begin{proof}
@@ -306,9 +308,13 @@
 		\begin{align}
 			f^{-1}(f(n))\sim n\\
 			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
-			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1.
+			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1. \label{L eq sim 1}
 		\end{align}
-		Thus
+		Using relation of $x$ and $n$ obtained in Lemma~\ref{sum f Asymp}
+		\begin{align}
+			\tilde{L}\left(\frac{x}{n}\right)\sim \tilde{L}\left(n^\alpha L(n)\right).\label{triv L thing}
+		\end{align}
+		Thus from equations \ref{triv L thing} and \ref{L eq sim 1}
 		\begin{align}
 			x^{\frac{1}{\alpha}}M\tilde{L}\left(\frac{x}{n}\right)n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
 			&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\frac{2\alpha}{\alpha-1}\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\\
