@@ -28,7 +28,7 @@
 
 	\begin{abstract}
 		In this paper we extend the results of O'Sullivan et al. on interval sums of prime powers to the broader class of regularly varying functions that are measurable, eventually monotonic and locally bounded away from $0$ and $\infty$. We find an asymptotic formula for the number of interval sums below $x$. Our approach relies on approximating the number of fixed length interval sums using the function $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ that comes naturally from inverting the asymptotic relation. The contribution from the number of interval sums of small length is negligible, allowing us to obtain the full asymptotic.
-	\end{abstract}
+	\end{abstract}	
 	
 	\section{Introduction}
 	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. To the best of our knowledge, no asymptotic formula is known for more general sequences. In this paper we find an asymptotic formula for a class of sequences, namely those $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
@@ -149,7 +149,7 @@
 			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\\
 			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
 		\end{align}
-		Since the uniform convergence theorem applies uniformly this convergence is also uniformly.
+		Since the uniform convergence theorem applies uniformly this convergence is also uniform.
 	\end{proof}
 	
 	\begin{lemma}\label{phi integral}
@@ -291,7 +291,12 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Clearly $s_i(x)\le f^{-1}\left(\frac{x}{i}\right)$. The inverse of a regularly varying functions is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
+		Since
+		\begin{align}
+			x\ge f(i)+\dots+f(i+k-1)\ge kf(i)\\
+			f^{-1}\left(\frac{x}{k}\right)\ge f(i),
+		\end{align}	 
+		it follows that $s_k(x)\le f^{-1}\left(\frac{x}{k}\right)$. The inverse of a regularly varying function is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
 		\begin{align}
 		\sum_{i=1}^{n\epsilon} f^{-1}\left(\frac{x}{i}\right)\sim  \int_{1}^{n\epsilon} f^{-1}\left(\frac{x}{t}\right)dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt.
 		\end{align}
@@ -359,7 +364,7 @@
 	
 	The convergence is quite slow. For example $S(x)$ for $f(x)=x^3\log(x)$ at $x=10^{20}$ has still a relative error of $\approx 1.4\%$ compared to the asymptotic formula and for $f(x)=x^3 \log^2(x)$ the relative error is $\approx 2.8\%$.
 	
-	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum's to integral is slower for larger indices.
+	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
 	
 	\section{Conclusion}
 	The main theorem gives an asymptotic for the number of interval sums below $x$, namely $S(x)\sim C(\alpha)n^2$. It remains an open question what happens in the case $\alpha\le 1$; our methods can't handle that case since the integral in Lemma~\ref{phi integral} diverges. Future work could therefore investigate the case $\alpha\le 1$, which requires a different approach as the integral for $C(\alpha)$ diverges.
