@@ -10,6 +10,7 @@
 \linespread{2}
 \usepackage[margin=25mm]{geometry}
 \usepackage{comment}
+\usepackage{siunitx}
 
 
 \newtheorem{lemma}{Lemma}
@@ -17,7 +18,7 @@
 \newtheorem{definition}{Definition}
 
 \title{Asymptotic Behavior of the Number of Interval Sums}
-\author{Ohto Katila}
+%\author{Ohto Katila}
 \date{\today}
 
 
@@ -383,18 +384,30 @@
 		From Lemma~\ref{head's neglible} it follows that the first sum is negligible in the asymptotics, so taking $\epsilon\to 0$ finishes the proof. 
 	\end{proof}
 	
-	\section{Empirical Convergence of Asymptotic Formula}
+	\section{Convergence of the Asymptotic Formula}
 	
 	Figures~\ref{SVeffectsOnConvergence} and \ref{indexEffectsOnConvergence} show the impact of the slowly varying part and the index on convergence, respectively. We can observe that increasing the index, slows down the convergence, and a larger growth rate in the slowly varying part corresponds to slower convergence.
 	
-	The convergence is quite slow. For example $S(x)$ for $f(x)=x^3\log(x)$ at $x=10^{20}$ has still a relative error of $\approx 1.4\%$ compared to the asymptotic formula and for $f(x)=x^3 \log^2(x)$ the relative error is $\approx 2.8\%$.
+	See the table below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
+	%For example $S(x)$ for $f(x)=x^3\log(x)$ at $x=10^{20}$ has still a relative error of $\approx 1.4\%$ compared to the asymptotic formula and for $f(x)=x^3 \log^2(x)$ the relative error is $\approx 2.8\%$.
+	
+	\begin{center}
 	\begin{tabular}{ |c|c|c| }
 		\hline
-		a & b & c \\ 
+		$f(x)$ & relative error at $x=10^{20}$ \\ 
 		\hline
-		d & e & f \\ 
+		$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
+		\hline
+		$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
+		\hline
+		$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
+		\hline
+		$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
+		\hline
+		$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
 		\hline
 	\end{tabular}
+	\end{center}
 	
 	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
 	
