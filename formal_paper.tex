@@ -10,6 +10,7 @@
 \linespread{2}
 \usepackage[margin=25mm]{geometry}
 \usepackage{comment}
+\usepackage{float}
 \usepackage{siunitx}
 
 
@@ -28,13 +29,13 @@
 	\maketitle
 
 	\begin{abstract}
-		We find an asymptotic formula for a class of sequences, namely those $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
+		An asymptotic formula is found for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
 		
 		Our main theorem provides an asymptotic for the interval sum counting function
 		\begin{align}
 			S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
 		\end{align}
-		That is, we have
+		That is
 		\begin{align}
 			S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
 		\end{align}
@@ -44,7 +45,7 @@
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
 		\end{align} 
 		
-		The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound. We can split the $S(x)$ into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of 
+		The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound. The $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
 		\begin{align}
 			\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
 		\end{align} 
@@ -52,18 +53,18 @@
 		\begin{align}
 			n^2\int_0^{1} \phi^{-1}(t)dt
 		\end{align}
-		We can calculate the integral using standard u-substitution and using analytically extended beta-function, which completes the proof.
+		The integral can be calculated using standard u-substitution and using analytically extended beta-function, which completes the proof.
 		
 	\end{abstract}	
 	
 	\section{Introduction}
-	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic for the number of interval sums of prime powers. To the best of our knowledge, no asymptotic formula is known for more general sequences. We find an asymptotic formula for a class of sequences, namely those $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
+	Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963}\cite{primePowerConsecutiveSums}\cite{primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic for the number of interval sums of prime powers. To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
 	
 	Our main theorem provides an asymptotic for the interval sum counting function
 	\begin{align}
 	S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
 	\end{align}
-	That is, we have
+	That is
 	\begin{align}
 	S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
 	\end{align}
@@ -73,7 +74,7 @@
 	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
 	\end{align} 
 	
-	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. We can split the $S(x)$ into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that we can relate $s_i$ to the inverse of 
+	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. The $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
 	\begin{align}
 	\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
 	\end{align} 
@@ -88,14 +89,14 @@
 		\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
 		\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
 		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
-		We often omit the "$x\to a$" part, when it is clear from context.
+		The part "$x\to a$" is often omitted, when it is clear from context.
 		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
-		\item We denote sums of the form
+		\item sums of the form
 		\begin{align}
 			\sum_{i=x}^{y} F(i).
 		\end{align}
-		with
+		are denoted with
 		\begin{align}
 			\sum_{x\le i< y} F(i)
 		\end{align}
@@ -123,7 +124,7 @@
 		\end{align}
 	\end{definition}
 	
-	We assume throughout this paper that $n=n(x)$ is the unique integer satisfying
+	It is assumed throughout this paper that $n=n(x)$ is the unique integer satisfying
 	\begin{align}
 	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
 	\end{align}
@@ -319,8 +320,8 @@
 	\begin{proof}
 		Since
 		\begin{align}
-			x\ge f(i)+\dots+f(i+k-1)\ge kf(i)\\
-			f^{-1}\left(\frac{x}{k}\right)\ge f(i),
+			x\ge f(i)+\dots+f(i+k-1)&\ge kf(i)\\
+			f^{-1}\left(\frac{x}{k}\right)&\ge i,
 		\end{align}	 
 		it follows that $s_k(x)\le f^{-1}\left(\frac{x}{k}\right)$. The inverse of a regularly varying function is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
 		\begin{align}
@@ -388,10 +389,10 @@
 	
 	Figures~\ref{SVeffectsOnConvergence} and \ref{indexEffectsOnConvergence} show the impact of the slowly varying part and the index on convergence, respectively. We can observe that increasing the index, slows down the convergence, and a larger growth rate in the slowly varying part corresponds to slower convergence.
 	
-	See the table below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
+	See the table \ref{exampleRelErrors} below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
 	%For example $S(x)$ for $f(x)=x^3\log(x)$ at $x=10^{20}$ has still a relative error of $\approx 1.4\%$ compared to the asymptotic formula and for $f(x)=x^3 \log^2(x)$ the relative error is $\approx 2.8\%$.
-	
-	\begin{center}
+	\begin{figure}[H]
+	\centering
 	\begin{tabular}{ |c|c|c| }
 		\hline
 		$f(x)$ & relative error at $x=10^{20}$ \\ 
@@ -407,7 +408,9 @@
 		$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
 		\hline
 	\end{tabular}
-	\end{center}
+	\caption{Relative error of the asymptotic at $x=10^{20}$ for various functions.}
+	\label{exampleRelErrors}
+	\end{figure}
 	
 	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
 	
