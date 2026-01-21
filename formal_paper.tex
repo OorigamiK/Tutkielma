@@ -183,6 +183,38 @@
 			Since the uniform convergence theorem applies uniformly this convergence is also uniform.
 		\end{proof}
 		
+		\begin{lemma}\label{s asymp}
+			Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
+			\begin{align}
+				s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
+			\end{align}
+			where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+		\end{lemma}
+		
+		\begin{proof}
+			Let $l,k>0$ be such that $n(k-l)=i$ and
+			\begin{align}
+				\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
+			\end{align}
+			
+			Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
+			\begin{align}
+				\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
+			\end{align}
+			Thus
+			\begin{align}
+				\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
+				k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
+				k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
+				i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
+				ln&\sim n\phi^{-1}\left(\frac{i}{n}\right).
+			\end{align}
+			Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of intervals of length $i$, we get
+			\begin{align}
+				s_i(x) = nl\sim n\phi^{-1}\left(\frac{i}{n}\right).
+			\end{align}
+		\end{proof}
+		
 		\begin{lemma}\label{phi integral}
 			The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is a strictly decreasing bijection, has an inverse and
 			\begin{align}
@@ -280,37 +312,7 @@
 			where the last equality follows from $z\Gamma(z)=\Gamma(z+1)$.
 		\end{proof}
 		
-		\begin{lemma}\label{s asymp}
-			Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
-			\begin{align}
-			s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
-			\end{align}
-			where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
-		\end{lemma}
 		
-		\begin{proof}
-			Let $l,k>0$ be such that $n(k-l)=i$ and
-			\begin{align}
-			\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
-			\end{align}
-	
-			Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
-			\begin{align}
-			\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
-			\end{align}
-			Thus
-			\begin{align}
-				\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
-				k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
-				k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
-				i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
-				ln&\sim n\phi^{-1}\left(\frac{i}{n}\right).
-			\end{align}
-			Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of intervals of length $i$, we get
-			\begin{align}
-			s_i(x) = nl\sim n\phi^{-1}\left(\frac{i}{n}\right).
-			\end{align}
-		\end{proof}
 	 
 		\section{Proof of the Main Theorem}\label{mainTheorem}
 		\begin{lemma}\label{head's neglible}
@@ -403,9 +405,9 @@
 			\midrule
 			$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
 			$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
-			%$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
+			$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
 			$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
-			%$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
+			$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
 			\bottomrule
 		\end{tabular}
 		\caption{Relative error of the asymptotic at $x=10^{20}$ for various functions.}
