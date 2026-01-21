@@ -389,38 +389,12 @@
 			From Lemma~\ref{head's neglible} it follows that the first sum is negligible in the asymptotics, so taking $\epsilon\to 0$ finishes the proof. 
 		\end{proof}
 		
-		\begin{corollary}\label{asympUpperBound}
-			The set of of distinct interval sums
-			\begin{align}
-				S'(x)=\left\{y\mid \sum_{n=i}^{j} f(n)=y<x\right\}
-			\end{align}
-			has inequality $|S'(x)|\lesssim n^2C(\alpha)$. 
-		\end{corollary}
-		\begin{proof}
-			Since $|S'(x)|\leq S(x)$, this is direct consequence of theorem~\ref{BlockSumsforAlphaGr1}.
-		\end{proof}
-		
-		\begin{corollary}
-			If furthermore $n\in \mathbb{N}\implies f(n)\in\mathbb{N}$, then natural density of $S'=\bigcup_{x=1}^{\infty} S'(x)$ is $0$.
-		\end{corollary}
-		\begin{proof}
-			This is equivalent to
-			\begin{align}
-				\lim_{x\to\infty} \frac{S'(x)}{x}=0
-			\end{align}
-			Using corollary~\ref{asympUpperBound} and lemma~\ref{sum f Asymp} we get
-			\begin{align}
-				\frac{S'(x)}{x}\lesssim \frac{n^2C(\alpha)}{n^{1+\alpha}/(\alpha+1)}=O(n^{1-\alpha}).
-			\end{align}
-			Since $1-\alpha<0$ the claim follows.
-		\end{proof}
 		
 		\section{Convergence of the Asymptotic Formula}
 		
 		Figures~\ref{SVeffectsOnConvergence} and \ref{indexEffectsOnConvergence} show the impact of the slowly varying part and the index on convergence, respectively. We can observe that increasing the index, slows down the convergence, and a larger growth rate in the slowly varying part corresponds to slower convergence.
 		
 		See the table \ref{exampleRelErrors} below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
-		%For example $S(x)$ for $f(x)=x^3\log(x)$ at $x=10^{20}$ has still a relative error of $\approx 1.4\%$ compared to the asymptotic formula and for $f(x)=x^3 \log^2(x)$ the relative error is $\approx 2.8\%$.
 		\begin{table}[H]
 		\centering
 		\begin{tabular}{ |l|l| }
@@ -429,9 +403,9 @@
 			\midrule
 			$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
 			$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
-			$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
+			%$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
 			$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
-			$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
+			%$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
 			\bottomrule
 		\end{tabular}
 		\caption{Relative error of the asymptotic at $x=10^{20}$ for various functions.}
