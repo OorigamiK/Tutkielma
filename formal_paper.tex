@@ -18,6 +18,7 @@
 	\newtheorem{lemma}{Lemma}
 	\newtheorem{theorem}{Theorem}
 	\newtheorem{definition}{Definition}
+	\newtheorem{corollary}{Corollary}
 	
 	\title{Asymptotic Behavior of the Number of Interval Sums}
 	%\author{Ohto Katila}
@@ -30,7 +31,7 @@
 		\maketitle
 	
 		\begin{abstract}
-			An asymptotic formula is found for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
+			Interval sum is sum of consecutive terms in a sequence. An asymptotic formula is found for the number of interval sums of a class of sequences. Namely $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
 			
 			The main theorem provides an asymptotic formula for the interval sum counting function
 			\begin{align}
@@ -59,7 +60,9 @@
 		\end{abstract}	
 		
 		\section{Introduction}
-		Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic for the number of interval sums of prime powers. To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
+		Interval sum is sum of consecutive terms in a sequence. Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic for the number of interval sums of prime powers. 
+		
+		To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for the number of interval sums for a class of sequences. Namely $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
 		
 		Our main theorem provides an asymptotic for the interval sum counting function
 		\begin{align}
@@ -384,6 +387,32 @@
 				\lim_{\epsilon\to0^+} \int_{\epsilon}^{1} \phi^{-1}(t)dt =\int_{0}^{1} \phi^{-1}(t)dt
 			\end{align}
 			From Lemma~\ref{head's neglible} it follows that the first sum is negligible in the asymptotics, so taking $\epsilon\to 0$ finishes the proof. 
+		\end{proof}
+		
+		\begin{corollary}\label{asympUpperBound}
+			The set of of distinct interval sums
+			\begin{align}
+				S'(x)=\left\{y\mid \sum_{n=i}^{j} f(n)=y<x\right\}
+			\end{align}
+			has inequality $|S'(x)|\lesssim n^2C(\alpha)$. 
+		\end{corollary}
+		\begin{proof}
+			Since $|S'(x)|\leq S(x)$, this is direct consequence of theorem~\ref{BlockSumsforAlphaGr1}.
+		\end{proof}
+		
+		\begin{corollary}
+			If furthermore $n\in \mathbb{N}\implies f(n)\in\mathbb{N}$, then natural density of $S'=\bigcup_{x=1}^{\infty} S'(x)$ is $0$.
+		\end{corollary}
+		\begin{proof}
+			This is equivalent to
+			\begin{align}
+				\lim_{x\to\infty} \frac{S'(x)}{x}=0
+			\end{align}
+			Using corollary~\ref{asympUpperBound} and lemma~\ref{sum f Asymp} we get
+			\begin{align}
+				\frac{S'(x)}{x}\lesssim \frac{n^2C(\alpha)}{n^{1+\alpha}/(\alpha+1)}=O(n^{1-\alpha}).
+			\end{align}
+			Since $1-\alpha<0$ the claim follows.
 		\end{proof}
 		
 		\section{Convergence of the Asymptotic Formula}
