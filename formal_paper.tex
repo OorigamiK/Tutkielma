@@ -1,450 +1,444 @@
-	\documentclass[10pt]{article}
-	\usepackage{amsmath, amssymb, amsthm, url, hyperref}
-	\usepackage[T1]{fontenc}
-	\usepackage[utf8]{inputenc}
-	\usepackage{cleveref}
-	\usepackage[thinc]{esdiff}
-	\usepackage{commath}
-	\usepackage{xr-hyper}
-	\externaldocument{appendix}
-	\linespread{2}
-	\usepackage[margin=25mm]{geometry}
-	\usepackage{comment}
-	\usepackage{float}
-	\usepackage{siunitx}
-	\usepackage{booktabs}
-	
-	
-	\newtheorem{lemma}{Lemma}
-	\newtheorem{theorem}{Theorem}
-	\newtheorem{definition}{Definition}
-	\newtheorem{corollary}{Corollary}
-	
-	\title{Asymptotic Behavior of the Number of Interval Sums}
-	%\author{Ohto Katila}
-	\date{\today}
-	
-	
-	\let\epsilon\varepsilon
-	
-	\begin{document}
-		\maketitle
-	
-		\begin{abstract}
-			An asymptotic formula is found for the number of interval sums for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$, eventually monotonic and regularly varying with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
-			
-			The main theorem provides an asymptotic formula for the interval sum counting function
-			\begin{align}
-				S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
-			\end{align}
-			That is
-			\begin{align}
-				S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
-			\end{align}
-			where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
-			\begin{align}
-				C(\alpha)=\frac{1}{2(\alpha+1)}
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
-			\end{align} 
-			
-			The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound. The function $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
-			\begin{align}
-				\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
-			\end{align} 
-			which allows us to relate $S(x)$ asymptotically to
-			\begin{align}
-				n^2\int_0^{1} \phi^{-1}(t)dt.
-			\end{align}
-			The integral can be calculated using standard substitution and using analytically extended beta-function, which completes the proof.
-			
-		\end{abstract}	
+\documentclass[10pt]{article}
+\usepackage{amsmath, amssymb, amsthm, url, hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cleveref}
+\usepackage[thinc]{esdiff}
+\usepackage{commath}
+\usepackage{xr-hyper}
+\externaldocument{appendix}
+\linespread{2}
+\usepackage[margin=25mm]{geometry}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{booktabs}
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\title{Asymptotic Behavior of the Number of Interval Sums}
+%\author{Ohto Katila}
+\date{\today}
+
+
+\let\epsilon\varepsilon
+
+\begin{document}
+	\maketitle
+
+	\begin{abstract}
+		An asymptotic formula is found for the number of interval sums for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$, eventually monotonic and regularly varying with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
 		
-		\section{Introduction}
-		Interval sum is sum of consecutive terms in a sequence. Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic for the number of interval sums of prime powers. 
-		
-		To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for the number of interval sums for a class of sequences. Namely $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$.
-		
-		Our main theorem provides an asymptotic for the interval sum counting function
+		The main theorem provides an asymptotic formula for the interval sum counting function
 		\begin{align}
-		S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
+			S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
 		\end{align}
 		That is
 		\begin{align}
-		S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
+			S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
 		\end{align}
 		where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
 		\begin{align}
-		C(\alpha)=\frac{1}{2(\alpha+1)}
-		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
+			C(\alpha)=\frac{1}{2(\alpha+1)}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
 		\end{align} 
 		
-		The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. The function $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
+		The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound. The function $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
 		\begin{align}
-		\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
+			\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
 		\end{align} 
-		which allows us to calculate the exact coefficient in the asymptotic.
-		
-		
-		This paper is organized as follows. Section \ref{notation} defines our notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then a lemma that calculates the integral of the inverse of $\phi$, and finally a lemma that relates $\phi$ and $s_i$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding the sum of $s_i$ for small $i$.
-		
-		\section{Notation}\label{notation}
-		\begin{itemize}
-			\item $RV_\alpha^+$ – measurable, eventually monotonic regularly varying (see definition~\ref{RV_def} or \cite{bingham1987regular}) functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}).
-			\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
-			\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
-			\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
-			The part "$x\to a$" is often omitted, when it is clear from context.
-			\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
-			\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
-			\item sums of the form
-			\begin{align}
-				\sum_{i=x}^{y} F(i).
-			\end{align}
-			are denoted with
-			\begin{align}
-				\sum_{x\le i< y} F(i)
-			\end{align}
-			\item $f(x)=O(g(x))$ – there exists $C>0$ such that $\abs{f(x)}\le Cg(x)$ for all sufficiently large $x$.
-			\item $f(x)=o(g(x))$ – shorthand for
-			\[
-			\lim_{x\to\infty} \frac{f(x)}{g(x)}=0
-			\]
-			
-		\end{itemize}
-		
-		\section{Preliminaries}\label{preliminaries}
-		
-		\begin{definition}\label{RV_def}
-			Function $f\colon\left[ 0, \infty \right)\to\left[0, \infty \right)$ is \textbf{regularly varying} with \textbf{index} $\alpha$ if for all $\lambda>0$
-			\begin{align}
-				\lim_{x\to\infty}\frac{f(\lambda x)}{f(x)}=\lambda^\alpha.
-			\end{align}
-		\end{definition}
-		
-		\begin{definition}\label{SV_def}
-			Function $L\colon\left[ 0, \infty \right)\to\left[ 0, \infty \right)$ is \textbf{slowly varying} if for all $\lambda>0$
-			\begin{align}
-				\lim_{x\to\infty}\frac{L(\lambda x)}{L(x)}=1.	
-			\end{align}
-		\end{definition}
-		
-		It is assumed throughout this paper that $n=n(x)$ is the unique integer satisfying
+		which allows us to relate $S(x)$ asymptotically to
 		\begin{align}
-		\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
+			n^2\int_0^{1} \phi^{-1}(t)dt.
 		\end{align}
-		where $f\in RV_\alpha^+$, that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$. That is, $n$ is the length of the largest interval. 
+		The integral can be calculated using standard substitution and using analytically extended beta-function, which completes the proof.
 		
+	\end{abstract}	
 	
+	\section{Introduction}
+	Interval sum is sum of consecutive terms in a sequence. Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquereConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic upper and lower bounds for the number of interval sums of prime powers. 
+	
+	To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for the number of interval sums for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This greatly generalizes O'Sullivan et al.'s work and provides exact asymptotic for the number of interval sums of prime powers. 
+	
+	Our main theorem provides an asymptotic for the interval sum counting function
+	\begin{align}
+	S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
+	\end{align}
+	That is
+	\begin{align}
+	S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
+	\end{align}
+	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
+	\begin{align}
+	C(\alpha)=\frac{1}{2(\alpha+1)}
+	\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
+	\end{align} 
+	
+	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound \cite{bingham1987regular}. The function $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
+	\begin{align}
+	\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
+	\end{align} 
+	which allows us to calculate the exact coefficient in the asymptotic.
+	
+	
+	This paper is organized as follows. Section \ref{notation} defines our notation. Section \ref{preliminaries} first proves basic lemmas about asymptotics, then a lemma that calculates the integral of the inverse of $\phi$, and finally a lemma that relates $\phi$ and $s_i$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding the sum of $s_i$ for small $i$.
+	
+	\section{Notation}\label{notation}
+	\begin{itemize}
+		\item $RV_\alpha^+$ – measurable, eventually monotonic regularly varying (see definition~\ref{RV_def} or \cite{bingham1987regular}) functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}).
+		\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
+		\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
+		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
+		The part "$x\to a$" is often omitted, when it is clear from context.
+		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
+		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
+		\item sums of the form $\sum_{i=x}^{y} F(i)$ are denoted with $\sum_{x\le i< y} F(i)$.
+		\item $f(x)=O(g(x))$ – there exists $C>0$ such that $\abs{f(x)}\le Cg(x)$ for all sufficiently large $x$.
+		\item $f(x)=o(g(x))$ – shorthand for
+		\[
+		\lim_{x\to\infty} \frac{f(x)}{g(x)}=0
+		\]
 		
-		\begin{lemma}\label{sum f Asymp}
-			We have
-			\begin{align}
-			x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}=\frac{nf(n)}{\alpha+1}
-			\end{align}
-			for $\alpha>-1$.
-		\end{lemma}
-		\begin{proof}
-			This is a direct consequence of Karamata's theorem (see proposition 1.5.8 in \cite{bingham1987regular} or Proposition~\ref{karamata} in the appendix).
-		\end{proof}
+	\end{itemize}
+	
+	\section{Preliminaries}\label{preliminaries}
+	
+	\begin{definition}\label{RV_def}
+		Function $f\colon\left[ 0, \infty \right)\to\left[0, \infty \right)$ is \textbf{regularly varying} with \textbf{index} $\alpha$ if for all $\lambda>0$
+		\begin{align}
+			\lim_{x\to\infty}\frac{f(\lambda x)}{f(x)}=\lambda^\alpha.
+		\end{align}
+	\end{definition}
+	
+	\begin{definition}\label{SV_def}
+		Function $L\colon\left[ 0, \infty \right)\to\left[ 0, \infty \right)$ is \textbf{slowly varying} if for all $\lambda>0$
+		\begin{align}
+			\lim_{x\to\infty}\frac{L(\lambda x)}{L(x)}=1.	
+		\end{align}
+	\end{definition}
+	
+	It is assumed throughout this paper that $n=n(x)$ is the unique integer satisfying
+	\begin{align}
+	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
+	\end{align}
+	where $f\in RV_\alpha^+$, that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$. That is, $n$ is the length of the largest interval. 
+	
+
+	
+	\begin{lemma}\label{sum f Asymp}
+		We have
+		\begin{align}
+		x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}=\frac{nf(n)}{\alpha+1}
+		\end{align}
+		for $\alpha>-1$.
+	\end{lemma}
+	\begin{proof}
+		This is a direct consequence of Karamata's theorem (see proposition 1.5.8 in \cite{bingham1987regular} or Proposition~\ref{karamata} in the appendix).
+	\end{proof}
+	
+	\begin{lemma}\label{sum f range asymp}
+		Let $\epsilon>0$ and let $k,l>0$ such that $k-l>\epsilon$. If $\alpha>1$ and
+		\begin{align}
+		\sum_{i=nl}^{nk} f(i)<x
+		\end{align} 
+		then uniformly in $k$ and $l$
+		\begin{align}
+		\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
+		\end{align}
+	\end{lemma}
+	\begin{proof}
+		From the definition of $n$ it follows that $k\le l+1$. Since $f$ is eventually increasing
+		\begin{align}
+		\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
+		\end{align}
+		Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular} or Theorem~\ref{PottersBound} in the Appendix) and Lemma~\ref{sum f Asymp}
+		%voi laajentaa \alpha>0 sillä että ottaa paremman potterin.
+		\begin{align}
+			\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\\
+			&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\\
+			&\gtrsim \epsilon n^{\alpha+1}L(n)l^{\alpha}\frac{1}{2\max(l, l^{-1})}.
+		\end{align}
+		Thus
+		\begin{align}
+		l\lesssim \max\left({\left(\frac{2}{\epsilon(\alpha+1)}\right)^{\frac{1}{\alpha+1}}}, {\left(\frac{2}{\epsilon(\alpha+1)}\right)^{\frac{1}{\alpha-1}}}\right).
+		\end{align}
+		Now $l$ and $k$ are bounded above and below, so  we can use the uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or Theorem~\ref{UCT} in the Appendix)
+		\begin{align}
+			\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} i^\alpha L(n)\\
+			&=L(n)\sum_{i=nl}^{nk} i^\alpha\\
+			&\sim L(n)\int_{nl}^{nk} t^\alpha dt\\
+			&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
+		\end{align}
+		Since the uniform convergence theorem applies uniformly this convergence is also uniform.
+	\end{proof}
+	
+	\begin{lemma}\label{s asymp}
+		Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
+		\begin{align}
+			s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
+		\end{align}
+		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+	\end{lemma}
+	
+	\begin{proof}
+		Let $l,k>0$ be such that $n(k-l)=i$ and
+		\begin{align}
+			\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
+		\end{align}
 		
-		\begin{lemma}\label{sum f range asymp}
-			Let $\epsilon>0$ and let $k,l>0$ such that $k-l>\epsilon$. If $\alpha>1$ and
-			\begin{align}
-			\sum_{i=nl}^{nk} f(i)<x
-			\end{align} 
-			then uniformly in $k$ and $l$
-			\begin{align}
-			\sum_{i=nl}^{nk} f(i)\sim \frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
-			\end{align}
-		\end{lemma}
-		\begin{proof}
-			From the definition of $n$ it follows that $k\le l+1$. Since $f$ is eventually increasing
-			\begin{align}
-			\sum_{i=nl}^{nk} f(i)>n(k-l) f(nl)>n\epsilon f(nl).
-			\end{align}
-			Using Potter's bound (see Theorem 1.5.6 \cite{bingham1987regular} or Theorem~\ref{PottersBound} in the Appendix) and Lemma~\ref{sum f Asymp}
-			%voi laajentaa \alpha>0 sillä että ottaa paremman potterin.
-			\begin{align}
-				\frac{1}{\alpha+1}n^{\alpha+1}L(n)&\gtrsim n\epsilon f(nl)\\
-				&= n^{\alpha+1}\epsilon l^{\alpha}L(nl)\\
-				&\gtrsim \epsilon n^{\alpha+1}L(n)l^{\alpha}\frac{1}{2\max(l, l^{-1})}.
-			\end{align}
-			Thus
-			\begin{align}
-			l\lesssim \max\left({\left(\frac{2}{\epsilon(\alpha+1)}\right)^{\frac{1}{\alpha+1}}}, {\left(\frac{2}{\epsilon(\alpha+1)}\right)^{\frac{1}{\alpha-1}}}\right).
-			\end{align}
-			Now $l$ and $k$ are bounded above and below, so  we can use the uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or Theorem~\ref{UCT} in the Appendix)
-			\begin{align}
-				\sum_{i=nl}^{nk} f(i) &\sim \sum_{i=nl}^{nk} i^\alpha L(n)\\
-				&=L(n)\sum_{i=nl}^{nk} i^\alpha\\
-				&\sim L(n)\int_{nl}^{nk} t^\alpha dt\\
-				&=\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1}).
-			\end{align}
-			Since the uniform convergence theorem applies uniformly this convergence is also uniform.
-		\end{proof}
+		Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
+		\begin{align}
+			\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
+		\end{align}
+		Thus
+		\begin{align}
+			\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
+			k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
+			k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
+			i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
+			ln&\sim n\phi^{-1}\left(\frac{i}{n}\right).
+		\end{align}
+		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of intervals of length $i$, we get
+		\begin{align}
+			s_i(x) = nl\sim n\phi^{-1}\left(\frac{i}{n}\right).
+		\end{align}
+	\end{proof}
+	
+	\begin{lemma}\label{phi integral}
+		The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is a strictly decreasing bijection, has an inverse and
+		\begin{align}
+		\int_{0}^{1} \phi^{-1}(t)dt=\frac{1}{2(\alpha+1)}
+		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
+		\end{align}
+		for $\alpha>1$.
+	\end{lemma}
+	
+	\begin{proof}
+		Taking the derivative of $\phi$
+		\begin{align}
+			\diff{\phi}{x}&=(1+x^{\alpha+1})^{-\frac{\alpha}{\alpha+1}}x^{\alpha}-1\\
+			&=\frac{x^\alpha}{\left(\left(1+x^{\alpha+1}\right)^{\frac{1}{\alpha+1}}\right)^{\alpha}}-1\\
+			&<1-1=0
+		\end{align}
+		where the last inequality follows from $(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}>x$. Because the derivative of $\phi$ is negative everywhere, $\phi$ is strictly decreasing. Now $\phi$ is a bijection, because $\phi(0)=1$ and $\lim_{x\to\infty}\phi(x)=0$, hence has an inverse. Since $\phi$ is a strictly decreasing bijection
+		\begin{align}
+		\int_{0}^{1} \phi^{-1}(x)dx=\int_{0}^{\infty} \phi(x)dx.
+		\end{align}
+		Next we show that the integral converges. Since $x^{\frac{1}{\alpha+1}}$ is increasing with a decreasing derivative, we have $(1+y)^{\frac{1}{\alpha+1}}<y^{\frac{1}{\alpha+1}}+\frac{1}{\alpha+1}y^{-\frac{\alpha}{\alpha+1}}$. Thus
+		\begin{align}
+		\phi(x)<x^{-\alpha},
+		\end{align}
+		so the integral converges.
 		
-		\begin{lemma}\label{s asymp}
-			Let $\epsilon>0$ and $i>\epsilon n$, then $s_i(x)$ has the following asymptotic
-			\begin{align}
-				s_i(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
-			\end{align}
-			where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
-		\end{lemma}
+		Doing a change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$, we get
+		\begin{align}
+		dx=\frac{1}{\alpha+1}\left(\frac{t}{1-t}\right)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt
+		\end{align}	
+		and
+		\begin{align}
+			\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x  \\
+			&=\left(\frac{1}{1-t}\right)^{\frac{1}{\alpha+1}}-\left(\frac{t}{1-t}\right)^{\frac{1}{\alpha+1}} 	\\
+			&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}}).
+		\end{align}
+		Putting it together
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\int_{0}^{1} (1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})
+			\frac{1}{\alpha+1}\left(\frac{t}{1-t}\right)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\\
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\\
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
+		\end{align}
 		
-		\begin{proof}
-			Let $l,k>0$ be such that $n(k-l)=i$ and
-			\begin{align}
-				\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
-			\end{align}
-			
-			Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
-			\begin{align}
-				\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
-			\end{align}
-			Thus
-			\begin{align}
-				\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
-				k^{\alpha+1}-l^{\alpha+1}&\sim 1\\
-				k-l&\sim (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
-				i&\sim n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
-				ln&\sim n\phi^{-1}\left(\frac{i}{n}\right).
-			\end{align}
-			Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_i(x)$ counts the number of intervals of length $i$, we get
-			\begin{align}
-				s_i(x) = nl\sim n\phi^{-1}\left(\frac{i}{n}\right).
-			\end{align}
-		\end{proof}
-		
-		\begin{lemma}\label{phi integral}
-			The function $\phi:(0,\infty)\to(0,1)$, $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$ is a strictly decreasing bijection, has an inverse and
-			\begin{align}
-			\int_{0}^{1} \phi^{-1}(t)dt=\frac{1}{2(\alpha+1)}
+		Let $g_r(t)=(1-t)^{r-\frac{2}{\alpha+1}-1}
+		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$ and $g(t)=(1-t)^{-\frac{2}{\alpha+1}-1}
+		(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$. Since for each $r>0$, $g_r(t)\to g(t), r\to0$ pointwise
+		and $\abs{g_r(t)}<\abs{g(t)}$, we can use the dominated convergence theorem. Thus
+		\begin{align}
+			\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt
+			=\lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
+		\end{align}
+		Let $B$ be the beta function (see NIST DLMF § 5.12.1 \cite{NIST:DLMF})
+		\begin{align}
+		B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
+		\end{align}
+		The beta function can be analytically extended using Pochhammer's integral (see NIST DLMF § 5.12.12 \cite{NIST:DLMF}).
+		\begin{align}
+			&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
+			&=\frac{1}{\alpha+1} \lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
+			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
+			&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(B\left(\frac{1}{\alpha+1}, r-\frac{2}{\alpha+1}\right)-
+			B\left(\frac{2}{\alpha+1}, r-\frac{2}{\alpha+1}\right)\right).
+		\end{align}
+		Note that neither of the gamma functions converge, but the difference converges. Using the gamma expression for beta functions we get
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+r-\frac{2}{\alpha+1})}
+			-
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+r-\frac{2}{\alpha+1})}
+			\right)\\
+			&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+			-
+			\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}
+			\right).
+		\end{align}
+		Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Thus
+		\begin{align}
+		\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0
+		\end{align}
+		so the expression simplifies to
+		\begin{align}
+			\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
+			\\
+			&=\frac{1}{2(\alpha+1)}
 			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
-			\end{align}
-			for $\alpha>1$.
-		\end{lemma}
-		
-		\begin{proof}
-			Taking the derivative of $\phi$
-			\begin{align}
-				\diff{\phi}{x}&=(1+x^{\alpha+1})^{-\frac{\alpha}{\alpha+1}}x^{\alpha}-1\\
-				&=\frac{x^\alpha}{\left(\left(1+x^{\alpha+1}\right)^{\frac{1}{\alpha+1}}\right)^{\alpha}}-1\\
-				&<1-1=0
-			\end{align}
-			where the last inequality follows from $(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}>x$. Because the derivative of $\phi$ is negative everywhere, $\phi$ is strictly decreasing. Now $\phi$ is a bijection, because $\phi(0)=1$ and $\lim_{x\to\infty}\phi(x)=0$, hence has an inverse. Since $\phi$ is a strictly decreasing bijection
-			\begin{align}
-			\int_{0}^{1} \phi^{-1}(x)dx=\int_{0}^{\infty} \phi(x)dx.
-			\end{align}
-			Next we show that the integral converges. Since $x^{\frac{1}{\alpha+1}}$ is increasing with a decreasing derivative, we have $(1+y)^{\frac{1}{\alpha+1}}<y^{\frac{1}{\alpha+1}}+\frac{1}{\alpha+1}y^{-\frac{\alpha}{\alpha+1}}$. Thus
-			\begin{align}
-			\phi(x)<x^{-\alpha},
-			\end{align}
-			so the integral converges.
-			
-			Doing a change of variables $t=\frac{x^{\alpha+1}}{1+x^{\alpha+1}}$, $x=(\frac{t}{1-t})^{\frac{1}{\alpha+1}}$, we get
-			\begin{align}
-			dx=\frac{1}{\alpha+1}\left(\frac{t}{1-t}\right)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt
-			\end{align}	
-			and
-			\begin{align}
-				\phi(x)&=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x  \\
-				&=\left(\frac{1}{1-t}\right)^{\frac{1}{\alpha+1}}-\left(\frac{t}{1-t}\right)^{\frac{1}{\alpha+1}} 	\\
-				&=(1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}}).
-			\end{align}
-			Putting it together
-			\begin{align}
-				\int_{0}^{\infty} \phi(x)dx&=\int_{0}^{1} (1-t)^{-\frac{1}{\alpha+1}}(1-t^{\frac{1}{\alpha+1}})
-				\frac{1}{\alpha+1}\left(\frac{t}{1-t}\right)^{-\frac{\alpha}{\alpha+1}}(1-t)^{-2}dt\\
-				&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{\frac{\alpha}{\alpha+1}-\frac{1}{\alpha+1}-2}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1}{\alpha+1}-\frac{\alpha}{\alpha+1}})dt\\
-				&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
-			\end{align}
-			
-			Let $g_r(t)=(1-t)^{r-\frac{2}{\alpha+1}-1}
-			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$ and $g(t)=(1-t)^{-\frac{2}{\alpha+1}-1}
-			(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})$. Since for each $r>0$, $g_r(t)\to g(t), r\to0$ pointwise
-			and $\abs{g_r(t)}<\abs{g(t)}$, we can use the dominated convergence theorem. Thus
-			\begin{align}
-				\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
-				=\lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt.
-			\end{align}
-			Let $B$ be the beta function (see NIST DLMF § 5.12.1 \cite{NIST:DLMF})
-			\begin{align}
-			B(z_1, z_2)=\int_{0}^{1} t^{z_1-1}(1-t)^{z_2-1}dt=\frac{\Gamma(z_1)\Gamma(z_2)}{\Gamma(z_1+z_2)}
-			\end{align}
-			The beta function can be analytically extended using Pochhammer's integral (see NIST DLMF § 5.12.12 \cite{NIST:DLMF}).
-			\begin{align}
-				&=\frac{1}{\alpha+1}\int_{0}^{1} (1-t)^{-\frac{2}{\alpha+1}-1}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
-				&=\frac{1}{\alpha+1} \lim_{r\to0^+} \int_{0}^{1} (1-t)^{r-\frac{2}{\alpha+1}-1}
-				(t^{-\frac{\alpha}{\alpha+1}}-t^{\frac{1-\alpha}{\alpha+1}})dt\\
-				&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(B\left(\frac{1}{\alpha+1}, r-\frac{2}{\alpha+1}\right)-
-				B\left(\frac{2}{\alpha+1}, r-\frac{2}{\alpha+1}\right)\right).
-			\end{align}
-			Using the gamma expression for beta functions we get
-			\begin{align}
-				\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{1}{\alpha+1}+r-\frac{2}{\alpha+1})}
-				-
-				\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(r-\frac{2}{\alpha+1})}{\Gamma(\frac{2}{\alpha+1}+r-\frac{2}{\alpha+1})}
-				\right)\\
-				&=\frac{1}{\alpha+1}\lim_{r\to 0^+}\left(
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
-				-
-				\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}
-				\right).
-			\end{align}
-			Since $\Gamma(t)=\frac{\Gamma(1+t)}{t}$ we have $\Gamma(t)\sim\frac{1}{t}, t\to 0$. Thus
-			\begin{align}
-			\lim_{r\to 0}\frac{\Gamma(\frac{2}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(r)}=0
-			\end{align}
-			so the expression simplifies to
-			\begin{align}
-				\int_{0}^{\infty} \phi(x)dx&=\frac{1}{\alpha+1}
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(-\frac{2}{\alpha+1})}{\Gamma(-\frac{1}{\alpha+1})}
-				\\
-				&=\frac{1}{2(\alpha+1)}
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}
-			\end{align}
-			where the last equality follows from $z\Gamma(z)=\Gamma(z+1)$.
-		\end{proof}
-		
-		
-	 
-		\section{Proof of the Main Theorem}\label{mainTheorem}
-		\begin{lemma}\label{head's neglible}
-			Let $\epsilon>0$ and $\alpha>1$, then 
-			\begin{align}
-			\sum_{i=1}^{n\epsilon} s_i(x)=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})},
-			\end{align}
-			where the $O(n^2)$ term is independent of $\epsilon$.
-		\end{lemma}
-		
-		\begin{proof}
-			Since
-			\begin{align}
-				x\ge f(i)+\dots+f(i+k-1)&\ge kf(i)\\
-				f^{-1}\left(\frac{x}{k}\right)&\ge i,
-			\end{align}	 
-			it follows that $s_k(x)\le f^{-1}\left(\frac{x}{k}\right)$. The inverse of a regularly varying function is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
-			\begin{align}
-			\sum_{i=1}^{n\epsilon} f^{-1}\left(\frac{x}{i}\right)\sim  \int_{1}^{n\epsilon} f^{-1}\left(\frac{x}{t}\right)dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt.
-			\end{align}
-			By Potter's bound
-			\begin{align}
-			\tilde{L}\left(\frac{x}{t}\right)\le M\tilde{L}\left(\frac{x}{n}\right)\left(\frac{n}{t}\right)^{\delta},
-			\end{align}
-			where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(1-\frac{1}{\alpha})$. Now we can bound the integral
-			\begin{align}
-				x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt&\le
-				x^{\frac{1}{\alpha}}M\tilde{L}\left(\frac{x}{n}\right)n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}.
-			\end{align}
-			By definition
-			\begin{align}
-				f^{-1}(f(n))\sim n\\
-				n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
-				\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1. \label{L eq sim 1}
-			\end{align}
-			Using the relation between $x$ and $n$ obtained in Lemma~\ref{sum f Asymp}
-			\begin{align}
-				\tilde{L}\left(\frac{x}{n}\right)\sim \tilde{L}\left(n^\alpha L(n)\right).\label{triv L thing}
-			\end{align}
-			Thus from equations \ref{triv L thing} and \ref{L eq sim 1}
-			\begin{align}
-				x^{\frac{1}{\alpha}}M\tilde{L}\left(\frac{x}{n}\right)n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
-				&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\frac{2\alpha}{\alpha-1}\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\\
-				&=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}
-			\end{align}		
-		\end{proof}
-		
-		\begin{theorem}\label{BlockSumsforAlphaGr1}
-			The function $S(x)$ has the asymptotic $n^2 C(\alpha)$ for $\alpha>1$, where 
-			\begin{align}
-				C(\alpha)=\frac{1}{2(\alpha+1)}
-				\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
-			\end{align}
-		\end{theorem}
-		
-		\begin{proof}
-			Let $\epsilon>0$. From the definition of $S$ and $s_i$ it follows that
-			\begin{align}
-			S(x)=\sum_{i=1}^{n} s_i(x).
-			\end{align}
-			Splitting the sum
-			\begin{align}
-			S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x).
-			\end{align}
-			Using Lemma~\ref{s asymp} we get
-			\begin{align}
-				\sum_{i=n\epsilon}^{n} s_i(x)&\sim \sum_{i=n\epsilon}^{n} n\phi^{-1}\left(\frac{i}{n}\right)\\
-				&=n\sum_{i=n\epsilon}^{n} \phi^{-1}\left(\frac{i}{n}\right)\\
-				&\sim n \int_{n\epsilon}^{n} \phi^{-1}\left(\frac{t}{n}\right)dt\\
-				&=n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt.
-			\end{align}
-			Since the integral converges
-			\begin{align}
-				\lim_{\epsilon\to0^+} \int_{\epsilon}^{1} \phi^{-1}(t)dt =\int_{0}^{1} \phi^{-1}(t)dt
-			\end{align}
-			From Lemma~\ref{head's neglible} it follows that the first sum is negligible in the asymptotics, so taking $\epsilon\to 0$ finishes the proof. 
-		\end{proof}
-		
-		\begin{corollary}
-			Number of interval sums for $f(x)=x^\alpha, \alpha>1$ is asymptotic to
-			\begin{align}
-				x^{\frac{2}{1+\alpha}}(\alpha+1)^{\frac{2}{1+\alpha}}C(\alpha)
-			\end{align}
-		\end{corollary}
-		\begin{proof}
-			From theorem~\ref{BlockSumsforAlphaGr1} and lemma~\ref{sum f Asymp} it follows that
-			\begin{align}
-				S(x)\sim n^2C(\alpha)\sim ((\alpha+1)^{\frac{1}{1+\alpha}}x^{\frac{1}{1+\alpha}})^2C(\alpha)\sim x^{\frac{2}{1+\alpha}}(\alpha+1)^{\frac{2}{1+\alpha}}C(\alpha)
-			\end{align}
-		\end{proof}
-		
-		\begin{corollary}
-			Number of interval sums for prime powers $p^\alpha, \alpha>1$ is asymptotic to
-			\begin{align}
-				(1+\alpha)^2 C(\alpha)\left(\frac{x}{\log(x)}\right)^{\frac{2}{\alpha+1}}
-			\end{align}
-		\end{corollary}
-		\begin{proof}
-			From prime number theorem it follows that $f(x)\sim(x\log (x))^\alpha$. Now using lemma~\ref{sum f Asymp} it follows that $x\sim \frac{1}{\alpha+1}n^{\alpha+1}\log^\alpha(n)$ it is easy to see that $n=(1+\alpha)\left(\frac{x}{\log^{\alpha}(x)}\right)^{\frac{1}{1+\alpha}}$ is asymptotic inverse. Now using theorem~\ref{BlockSumsforAlphaGr1} the corollary follows.
-		\end{proof}
-		
-		
-		\section{Convergence of the Asymptotic Formula}
-		
-		Figures~\ref{SVeffectsOnConvergence} and \ref{indexEffectsOnConvergence} show the impact of the slowly varying part and the index on convergence, respectively. We can observe that increasing the index, slows down the convergence, and a larger growth rate in the slowly varying part corresponds to slower convergence.
-		
-		See the table \ref{exampleRelErrors} below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
-		\begin{table}[H]
-		\centering
-		\begin{tabular}{ |l|l| }
-			\toprule
-			$f(x)$ & relative error at $x=10^{20}$ \\ 
-			\midrule
-			$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
-			$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
-			%$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
-			$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
-			%$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
-			\bottomrule
-		\end{tabular}
-		\caption{Relative error of the asymptotic at $x=10^{20}$ for various functions.}
-		\label{exampleRelErrors}
-		\end{table}
-		
-		These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
-		
-		\section{Conclusion}
-		The main theorem gives an asymptotic for the number of interval sums below $x$, namely $S(x)\sim n^2 C(\alpha)$. It remains an open question what happens in the case $\alpha\le 1$; our methods can't handle that case since the integral in Lemma~\ref{phi integral} diverges. Future work could therefore investigate the case $\alpha\le 1$, which requires a different approach as the integral for $C(\alpha)$ diverges.
-		
-		\section{Use of AI}
-		AI has been used in making of this article. AI was used for linguistic and structural refinements of the paper. The AI models used were GPT-5 mini, GPT-5.1, Gemini 3 Flash and Gemini 3 Pro. All mathematics were rigorously checked by the author.
-		
-		\bibliographystyle{plain}
-		\bibliography{references}
-	\end{document}
+		\end{align}
+		where the last equality follows from $z\Gamma(z)=\Gamma(z+1)$.
+	\end{proof}
+	
+	One can see the graph of $C(\alpha)$ in the appendix figure~\ref{plotOfC(a)}.
+	
+
+	\section{Proof of the Main Theorem}\label{mainTheorem}
+	\begin{lemma}\label{head's neglible}
+		Let $\epsilon>0$ and $\alpha>1$, then 
+		\begin{align}
+		\sum_{i=1}^{n\epsilon} s_i(x)=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})},
+		\end{align}
+		where the $O(n^2)$ term is independent of $\epsilon$.
+	\end{lemma}
+	
+	\begin{proof}
+		Since
+		\begin{align}
+			x\ge f(i)+\dots+f(i+k-1)&\ge kf(i)\\
+			f^{-1}\left(\frac{x}{k}\right)&\ge i,
+		\end{align}	 
+		it follows that $s_k(x)\le f^{-1}\left(\frac{x}{k}\right)$. The inverse of a regularly varying function is regularly varying with index $\frac{1}{\alpha}$ (see Theorem 1.5.12 of \cite{bingham1987regular} or Theorem~\ref{RVinverse} in the Appendix). Let $f^{-1}(x)=x^{\frac{1}{\alpha}}\tilde{L}(x)$. We get
+		\begin{align}
+		\sum_{i=1}^{n\epsilon} f^{-1}\left(\frac{x}{i}\right)\sim  \int_{1}^{n\epsilon} f^{-1}\left(\frac{x}{t}\right)dt=x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt.
+		\end{align}
+		By Potter's bound
+		\begin{align}
+		\tilde{L}\left(\frac{x}{t}\right)\le M\tilde{L}\left(\frac{x}{n}\right)\left(\frac{n}{t}\right)^{\delta},
+		\end{align}
+		where $M$ is the constant from Potter's bound and $\delta=\frac{1}{2}(1-\frac{1}{\alpha})$. Now we can bound the integral
+		\begin{align}
+			x^{\frac{1}{\alpha}}\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}}\tilde{L}\left(\frac{x}{t}\right)dt&\le
+			x^{\frac{1}{\alpha}}M\tilde{L}\left(\frac{x}{n}\right)n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}.
+		\end{align}
+		By definition
+		\begin{align}
+			f^{-1}(f(n))\sim n\\
+			n\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim n\\
+			\tilde{L}(n^\alpha L(n))L(n)^{1/\alpha}\sim 1. \label{L eq sim 1}
+		\end{align}
+		Using the relation between $x$ and $n$ obtained in Lemma~\ref{sum f Asymp}
+		\begin{align}
+			\tilde{L}\left(\frac{x}{n}\right)\sim \tilde{L}\left(n^\alpha L(n)\right).\label{triv L thing}
+		\end{align}
+		Thus from equations \ref{triv L thing} and \ref{L eq sim 1}
+		\begin{align}
+			x^{\frac{1}{\alpha}}M\tilde{L}\left(\frac{x}{n}\right)n^\delta\int_{1}^{n\epsilon} t^{-\frac{1}{\alpha}-\delta}
+			&\sim Mn^{2}L(n)^{\frac{1}{\alpha}}\tilde{L}(n^\alpha L(n))\frac{2\alpha}{\alpha-1}\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}\\
+			&=O(n^2)\epsilon^{\frac{1}{2}(1-\frac{1}{\alpha})}.
+		\end{align}		
+	\end{proof}
+	
+	\begin{theorem}\label{BlockSumsforAlphaGr1}
+		The function $S(x)$ has the asymptotic $n^2 C(\alpha)$ for $\alpha>1$, where 
+		\begin{align}
+			C(\alpha)=\frac{1}{2(\alpha+1)}
+			\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
+		\end{align}
+	\end{theorem}
+	
+	\begin{proof}
+		Let $\epsilon>0$. From the definition of $S$ and $s_i$ it follows that
+		\begin{align}
+		S(x)=\sum_{i=1}^{n} s_i(x).
+		\end{align}
+		Splitting the sum
+		\begin{align}
+		S(x)=\sum_{i=1}^{n\epsilon} s_i(x)+\sum_{i=n\epsilon}^{n} s_i(x).
+		\end{align}
+		Using Lemma~\ref{s asymp} we get
+		\begin{align}
+			\sum_{i=n\epsilon}^{n} s_i(x)&\sim \sum_{i=n\epsilon}^{n} n\phi^{-1}\left(\frac{i}{n}\right)\\
+			&=n\sum_{i=n\epsilon}^{n} \phi^{-1}\left(\frac{i}{n}\right)\\
+			&\sim n \int_{n\epsilon}^{n} \phi^{-1}\left(\frac{t}{n}\right)dt\\
+			&=n^2\int_{\epsilon}^{1} \phi^{-1}(t)dt.
+		\end{align}
+		Since the integral converges
+		\begin{align}
+			\lim_{\epsilon\to0^+} \int_{\epsilon}^{1} \phi^{-1}(t)dt =\int_{0}^{1} \phi^{-1}(t)dt
+		\end{align}
+		From Lemma~\ref{head's neglible} it follows that the first sum is negligible in the asymptotics, so taking $\epsilon\to 0$ finishes the proof. 
+	\end{proof}
+	
+	\begin{corollary}
+		Number of interval sums for $f(x)=x^\alpha, \alpha>1$ is asymptotic to
+		\begin{align}
+			x^{\frac{2}{1+\alpha}}(\alpha+1)^{\frac{2}{1+\alpha}}C(\alpha)
+		\end{align}
+	\end{corollary}
+	\begin{proof}
+		From theorem~\ref{BlockSumsforAlphaGr1} and lemma~\ref{sum f Asymp} it follows that
+		\begin{align}
+			S(x)\sim n^2C(\alpha)\sim ((\alpha+1)^{\frac{1}{1+\alpha}}x^{\frac{1}{1+\alpha}})^2C(\alpha)\sim x^{\frac{2}{1+\alpha}}(\alpha+1)^{\frac{2}{1+\alpha}}C(\alpha)
+		\end{align}
+	\end{proof}
+	
+	\begin{corollary}
+		Number of interval sums for prime powers $p^\alpha, \alpha>1$ is asymptotic to
+		\begin{align}
+			(1+\alpha)^2 C(\alpha)\left(\frac{x}{\log(x)}\right)^{\frac{2}{\alpha+1}}
+		\end{align}
+	\end{corollary}
+	\begin{proof}
+		From prime number theorem it follows that $f(x)\sim(x\log (x))^\alpha$. Now using lemma~\ref{sum f Asymp} it follows that $x\sim \frac{1}{\alpha+1}n^{\alpha+1}\log^\alpha(n)$ it is easy to see that $n=(1+\alpha)\left(\frac{x}{\log^{\alpha}(x)}\right)^{\frac{1}{1+\alpha}}$ is asymptotic inverse. Now using theorem~\ref{BlockSumsforAlphaGr1} the corollary follows.
+	\end{proof}
+	
+	
+	\section{Convergence of the Asymptotic Formula}
+	
+	Figures~\ref{SVeffectsOnConvergence} and \ref{indexEffectsOnConvergence} show the impact of the slowly varying part and the index on convergence, respectively. We can observe that increasing the index, slows down the convergence, and a larger growth rate in the slowly varying part corresponds to slower convergence.
+	
+	See the table \ref{exampleRelErrors} below for relative error of the asymptotic at $x=10^{20}$ for varying functions.
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{ |l|l| }
+		\toprule
+		$f(x)$ & relative error at $x=10^{20}$ \\ 
+		\midrule
+		$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
+		$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
+		%$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
+		$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
+		%$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Relative error of the asymptotic at $x=10^{20}$ for various functions.}
+	\label{exampleRelErrors}
+	\end{table}
+	
+	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
+	
+	\section{Conclusion}
+	The main theorem gives an asymptotic for the number of interval sums below $x$, namely $S(x)\sim n^2 C(\alpha)$. It remains an open question what happens in the case $\alpha\le 1$; our methods can't handle that case since the integral in Lemma~\ref{phi integral} diverges. Future work could therefore investigate the case $\alpha\le 1$.
+	
+	\section{Use of AI}
+	AI has been used in making of this article. AI was used for improving clarity and grammar. The AI models used were GPT-5 mini, GPT-5.1, Gemini 3 Flash and Gemini 3 Pro.
+	
+	\bibliographystyle{plain}
+	\bibliography{references}
+\end{document}
