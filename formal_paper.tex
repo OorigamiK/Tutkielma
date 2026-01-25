@@ -14,11 +14,12 @@
 \usepackage{siunitx}
 \usepackage{booktabs}
 
-
+\theoremstyle{plain}      % Switch back to italic body text
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
 \newtheorem{corollary}{Corollary}
+\theoremstyle{definition} % Switch to roman body text
+\newtheorem{definition}{Definition}
 
 \title{Asymptotic Behavior of the Number of Interval Sums}
 %\author{Ohto Katila}
@@ -60,7 +61,7 @@
 	\end{abstract}	
 	
 	\section{Introduction}
-	Interval sum is sum of consecutive terms in a sequence. Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquaresConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquereConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic upper and lower bounds for the number of interval sums of prime powers. 
+	Interval sum is sum of consecutive terms in a sequence. Determining the asymptotic behavior of the count of interval sums less than $x$ has been investigated for primes and prime powers \cite{Moser_1963, primePowerConsecutiveSums, primeSquaresConsecutiveSums}. Moser \cite{Moser_1963} determined asymptotic behavior of interval sums of primes. Tongsomporn \cite{primeSquaresConsecutiveSums} et al. derived strict bounds for the number of interval sums of prime squares. O'Sullivan et al. \cite{primePowerConsecutiveSums} found asymptotic upper and lower bounds for the number of interval sums of prime powers. 
 	
 	To the best of our knowledge, no asymptotic formula is known for more general sequences. An asymptotic formula is found for the number of interval sums for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$ and eventually monotonic with index $\alpha> 1$. This greatly generalizes O'Sullivan et al.'s work and provides exact asymptotic for the number of interval sums of prime powers. 
 	
@@ -89,10 +90,10 @@
 	
 	\section{Notation}\label{notation}
 	\begin{itemize}
-		\item $RV_\alpha^+$ – measurable, eventually monotonic regularly varying (see definition~\ref{RV_def} or \cite{bingham1987regular}) functions locally bounded away from $0$ and $\infty$ with index $\alpha$ (see \cite{bingham1987regular}).
+		\item The function $f$ is assumed to satisfy following criterion: measurable, eventually monotonic, locally bounded away from $0$ and $\infty$ and regularly varying with index $\alpha$ (see definition~\ref{RV_def} or \cite{bingham1987regular}).
 		\item $S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of interval sums below $x$.
 		\item $s_k(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
-		\item  $f(x)\sim g(x), x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
+		\item  $f(x)\sim g(x),\ x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
 		The part "$x\to a$" is often omitted, when it is clear from context.
 		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
 		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
@@ -102,6 +103,10 @@
 		\[
 		\lim_{x\to\infty} \frac{f(x)}{g(x)}=0
 		\]
+		\item The function $n=n(x)$ is defined implicitly by 
+		\begin{equation}
+			\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
+		\end{equation}
 		
 	\end{itemize}
 	
@@ -121,13 +126,9 @@
 		\end{equation}
 	\end{definition}
 	
-	It is assumed throughout this paper that $n=n(x)$ is the unique integer satisfying
-	\begin{equation}
-	\sum_{i=1}^{n} f(i)\le x<\sum_{i=1}^{n+1} f(i)
-	\end{equation}
-	where $f\in RV_\alpha^+$, that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$. That is, $n$ is the length of the largest interval. 
+	%where $f\in RV_\alpha^+$, that is $f(x)=x^\alpha L(x)$ (see section 1.5 in \cite{bingham1987regular}), for some slowly varying function $L$. That is, $n$ is the length of the largest interval. 
 	
-
+	Since $f$ is measurable and regularly varying with index $\alpha$, we have $f(x)=x^\alpha L(x)$, for slowly varying $L$ (see Theorem 1.4.1 in \cite{bingham1987regular}).
 	
 	\begin{lemma}\label{sum f Asymp}
 		We have
@@ -431,10 +432,10 @@
 	These findings align with our analysis: the proofs rely on the uniform convergence theorem which gives slower convergence for larger growth rates and the convergence of the sum to integral is slower for larger indices.
 	
 	\section{Conclusion}
-	The main theorem gives an asymptotic for the number of interval sums below $x$, namely $S(x)\sim n^2 C(\alpha)$. It remains an open question what happens in the case $\alpha\le 1$; our methods can't handle that case since the integral in Lemma~\ref{phi integral} diverges. Future work could therefore investigate the case $\alpha\le 1$.
+	The main theorem gives an asymptotic for the number of interval sums below $x$, namely $S(x)\sim n^2 C(\alpha)$. It remains an open question what happens in the case $\alpha\le 1$; our methods can't handle that case since the integral in Lemma~\ref{phi integral} diverges. Future work could therefore investigate the case $\alpha\le 1$, it seems fruitful to use methods of de Haan theory to investigate the case $\alpha=1$.
 	
 	\section{Use of AI}
-	AI has been used in making of this article. AI was used for improving clarity and grammar. The AI models used were GPT-5 mini, GPT-5.1, Gemini 3 Flash and Gemini 3 Pro.
+	AI was used for improving clarity and grammar. The AI models used were GPT-5 mini, GPT-5.1, Gemini 3 Flash and Gemini 3 Pro.
 	
 	\bibliographystyle{plain}
 	\bibliography{references}
