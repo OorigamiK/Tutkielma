@@ -22,27 +22,27 @@
 	Interval sum is sum of consecutive terms in a sequence. An asymptotic formula is found for the number of interval sums for a class of sequences $\left(f(i)\right)_{i=1}^{\infty}$, where $f$ is measurable, locally bounded away from 0 and $\infty$, eventually monotonic and regularly varying with index $\alpha> 1$. This extends results of O'Sullivan et al. on interval sums of prime powers. 
 	
 	The main theorem provides an asymptotic formula for the interval sum counting function
-	\begin{align}
+	\begin{equation*}
 		S(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid i\le j, f(i)+f(i+1)+\dots+f(j)\le x\right\}.
-	\end{align}
+	\end{equation*}
 	That is
-	\begin{align}
+	\begin{equation*}
 		S(x)\sim n^2C(\alpha) \qquad n=n(x)\to\infty
-	\end{align}
+	\end{equation*}
 	where $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
-	\begin{align}
+	\begin{equation*}
 		C(\alpha)=\frac{1}{2(\alpha+1)}
 		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
-	\end{align} 
+	\end{equation*} 
 	
 	The proof relies on classical results from the theory of regular variation, in particular the uniform convergence theorem and Potter's bound. The function $S(x)$ can be split into a sum of $s_i$ that count the number of intervals of length $i$. The main idea in the proof is that $s_i$ can be related to the inverse of 
-	\begin{align}
+	\begin{equation*}
 		\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x
-	\end{align} 
+	\end{equation*} 
 	which allows us to relate $S(x)$ asymptotically to
-	\begin{align}
+	\begin{equation*}
 		n^2\int_0^{1} \phi^{-1}(t)dt.
-	\end{align}
+	\end{equation*}
 	The integral can be calculated using standard substitution and using analytically extended beta-function, which completes the proof.
 
 \end{document}
