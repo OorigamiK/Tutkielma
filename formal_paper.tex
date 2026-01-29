@@ -95,8 +95,8 @@
 		\item $s_{k, f}(x)=\#\left\{(i, j)\in\mathbb{N}^2\mid j-i=k-1, f(i)+f(i+1)+\dots+f(j)\le x\right\}$ – the number of 	interval sums of length $k$ below $x$.
 		\item $f(x)\sim g(x),\ x\to a$ – meaning $\lim_{x\to a} \frac{f(x)}{g(x)} = 1$.
 		The part "$x\to a$" is often omitted when it is clear from context.
-		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$
-		\item $f(x)\gtrsim g(x)$ – meaning $\liminf\frac{f(x)}{g(x)}\ge 1$.
+		\item $f(x)\lesssim g(x)$ – meaning $\limsup\frac{f(x)}{g(x)}\le1$.
+		\item $f(x)\gtrsim g(x)$ – meaning $g(x)\lesssim f(x)$.
 		\item sums of the form $\displaystyle\sum_{i=x}^{y} F(i)$ are denoted with $\displaystyle\sum_{x\le i< y} F(i)$.
 		\item $f(x)=O(g(x))$ – there exists $C>0$ such that $\abs{f(x)}\le Cg(x)$ for all sufficiently large $x$.
 		\item $f(x)=o(g(x))$ – shorthand for
@@ -179,42 +179,44 @@
 	\end{proof}
 	
 	\begin{lemma}\label{s asymp}
-		Let $\epsilon>0$ and $i>\epsilon n$, then $s_{i, f}(x)$ has the following asymptotic
+		Let $\epsilon>0$ and $\lambda\geq\epsilon$, then $s_{\lambda n, f}(x)$ has the following asymptotic
 		\begin{equation}
-			s_{i, f}(x)\sim n\phi^{-1}\left(\frac{i}{n}\right)
+			s_{\lambda n, f}(x)\sim n\phi^{-1}\left(\lambda\right)
 		\end{equation}
 		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
 	\end{lemma}
 	
 	\begin{proof}
-		Let $l,k>0$ be such that $n(k-l)=i$ and
+		Let $l,k>0$ be such that $k-l=\lambda$ and $k^{\alpha+1}-l^{\alpha+1}=1$. Since $n$ is the length of the largest interval, $\lambda<1$. Since $\lambda<1$, it follows that such $k$ and $l$ exists, by monotonicity of $(l+\lambda)^{\alpha+1}-l^{\alpha+1}$. Now Using mean-value theorem we get that for some $\zeta\in(l, k)$
 		\begin{equation}
-			\sum_{j=nl}^{nk} f(j)\le x<\sum_{j=nl+1}^{nk+1} f(j)
-		\end{equation}
-		
-		Clearly it follows that $l$ and $k$ are unique up to producing the same range of integer indices in the sum. Using Lemma~\ref{sum f range asymp} and Lemma~\ref{sum f Asymp}
-		\begin{equation}
-			\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})\sim \sum_{j=nl}^{nk} f(j)\sim x\sim \sum_{j=1}^{n} f(j) \sim \frac{n^{\alpha+1}L(n)}{\alpha+1}.
+			1=(l+\lambda)^{\alpha+1}-l^{\alpha+1}=(\alpha+1)\zeta^\alpha\lambda>(\alpha+1)l^\alpha\epsilon.
 		\end{equation}
 		Thus
 		\begin{align}
-			\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}\\
+			l<\left(\frac{1}{(\alpha+1)\epsilon}\right)^{\frac{1}{\alpha}}.
 		\end{align}
-		By definition we get
+		It follows that $l$ and $k$ are bounded above. Now we can use the uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or Theorem~\ref{UCT} in the Appendix) and lemma~\ref{sum f Asymp}
 		\begin{align}
-			\lim_{n\to\infty}\frac{\frac{n^{\alpha+1}L(n)}{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})}{\frac{n^{\alpha+1}L(n)}{\alpha+1}}&=1\\
-			\lim_{n\to\infty}k^{\alpha+1}-l^{\alpha+1}&=1.
+			x\sim\frac{1}{\alpha+1}L(n)n^{\alpha+1}&=\\
+			\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&=\\
+			L(n)\int_{nl}^{nk} t^\alpha dt&\sim\\
+			L(n)\sum_{i=nl}^{nk} i^\alpha&=\\
+			\sum_{i=nl}^{nk} i^\alpha L(n) &\sim \sum_{i=nl}^{nk} f(i).
 		\end{align}
-		Since $k$ and $l$ are constants independent of $n$ it follows
+		It follows that 
+		\begin{equation}\label{x sim nk-nl sum}
+			x\sim \sum_{i=nl}^{nk} f(i).
+		\end{equation}
+		Using $k^{\alpha+1}-l^{\alpha+1}=1$ we get
 		\begin{align}
 			k^{\alpha+1}-l^{\alpha+1}&= 1\\
 			k-l&= (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
-			i&= n((1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l)\\
-			ln&= n\phi^{-1}\left(\frac{i}{n}\right).
+			\lambda&= (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
+			ln&= n\phi^{-1}(\lambda).\label{ln eq}
 		\end{align}
-		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_{i, f}(x)$ counts the number of intervals of length $i$, we get
+		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_{\lambda n, f}(x)$ counts the number of intervals of length $\lambda n$, we get from equations~\ref{x sim nk-nl sum} and~\ref{ln eq}
 		\begin{equation}
-			s_{i, f}(x) = nl\sim n\phi^{-1}\left(\frac{i}{n}\right).
+			s_{\lambda n, f}(x) \sim nl = n\phi^{-1}(\lambda).
 		\end{equation}
 	\end{proof}
 	
@@ -427,13 +429,13 @@
 		\toprule
 		$f(x)$ & relative error at $x=10^{20}$ \\ 
 		\midrule
-		$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
+		%$x^2$ & $\num[round-mode=places, round-precision=3]{0.03706192}\%$ \\ 
 		$x^3$ & $\num[round-mode=places, round-precision=3]{0.0450621036211}\%$ \\ 
-		$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
-		$x^5$ & $\num[round-mode=places, round-precision=3]{0.771010584994}\%$ \\ 
+		%$x^4$ & $\num[round-mode=places, round-precision=3]{0.19448766}\%$ \\ 
+		%$x^5$ & $\num[round-mode=places, round-precision=3]{0.771010584994}\%$ \\ 
 		$x^3 \log(x)$ & $\num[round-mode=places, round-precision=3]{1.43313232124}\%$ \\ 
 		$x^3\log(x)^2$ & $\num[round-mode=places, round-precision=3]{2.83630518218}\%$ \\ 
-		$x^4/\sqrt{\log(x)}$ & $\num[round-mode=places, round-precision=3]{0.214554815854}\%$ \\
+		%$x^4/\sqrt{\log(x)}$ & $\num[round-mode=places, round-precision=3]{0.214554815854}\%$ \\
 		$x^4/\log(x)$ & $\num[round-mode=places, round-precision=3]{0.622234950826}\%$ \\
 		\bottomrule
 	\end{tabular}
