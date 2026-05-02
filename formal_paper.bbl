@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{bingham1987regular}
+N.~H. Bingham, C.~M. Goldie, and J.~L. Teugels.
+\newblock {\em Regular Variation}, volume~27 of {\em Encyclopedia of
+  Mathematics and its Applications}.
+\newblock Cambridge University Press, Cambridge, 1987.
+
+\bibitem{NIST:DLMF}
+{\it NIST Digital Library of Mathematical Functions}.
+\newblock \url{https://dlmf.nist.gov/}, Release 1.2.4 of 2025-03-15.
+\newblock F.~W.~J. Olver, A.~B. {Olde Daalhuis}, D.~W. Lozier, B.~I. Schneider,
+  R.~F. Boisvert, C.~W. Clark, B.~R. Miller, B.~V. Saunders, H.~S. Cohl, and
+  M.~A. McClain, eds.
+
+\bibitem{Moser_1963}
+L.~Moser.
+\newblock On the sum of consecutive primes.
+\newblock {\em Canadian Mathematical Bulletin}, 6(2):159–161, 1963.
+
+\bibitem{primePowerConsecutiveSums}
+C.~O'Sullivan, J.~P. Sorenson, and A.~Stahl.
+\newblock Algorithms and bounds on the sums of powers of consecutive primes.
+\newblock {\em Integers}, 24, 2024.
+
+\bibitem{primeSquaresConsecutiveSums}
+A.~Tongsomporn, S.~Wananiyakul, and J.~Steuding.
+\newblock Sums of consecutive prime squares.
+\newblock {\em Integers}, 22, 2022.
+
+\end{thebibliography}
