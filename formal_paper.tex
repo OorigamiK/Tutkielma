@@ -62,9 +62,9 @@
 	\end{equation}
 	That is
 	\begin{equation}
-		S_f(x)\sim n^2C(\alpha) \qquad n=n_f(x)\to\infty
+		S_f(x)\sim n_f(x)^2C(\alpha) \qquad x\to\infty
 	\end{equation}
-	where n is the length of the largest interval, with following asymptotic relation to $x$, $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
+	where $n:=n_f(x)$ is the length of the largest interval, with following asymptotic relation to $x$, $x\sim \frac{nf(n)}{\alpha+1}, x\to\infty$ and 
 	\begin{equation}
 		C(\alpha)=\frac{1}{2(\alpha+1)}
 		\frac{\Gamma(\frac{1}{\alpha+1})\Gamma(\frac{\alpha-1}{\alpha+1})}{\Gamma(\frac{\alpha}{\alpha+1})}.
@@ -76,8 +76,7 @@
 	\end{equation} 
 	which allows us to calculate the exact coefficient in the asymptotic.
 	
-	
-	This paper is organized as follows. Section \ref{notation} defines our notation. Section \ref{preliminaries} first proves basic lemma about asymptotics, then a lemma that relates $\phi$ and $s_{i, f}$, and finally a lemma that calculates the integral of the inverse of $\phi$. Section \ref{mainTheorem} proves the main theorem \ref{BlockSumsforAlphaGr1} and one technical lemma bounding the sum of $s_{i, f}$ for small $i$.
+	This paper is organized as follows. Section \ref{notation} defines our notation and some global assumptions. Section \ref{preliminaries} covers preliminaries and one lemma. Section \ref{mainTheorem} proves a lemma that relates $\phi$ and $s_{i, f}$, a lemma that calculates the integral of the inverse of $\phi$, one technical lemma bounding the sum of $s_{i, f}$ for small $i$ and finally proves the main theorem.
 	
 	
 	
@@ -108,7 +107,7 @@
 		\]
 		\item Define $n:=n_f(x)$, where 
 		\begin{equation}
-			n_f(x)=\max\left\{n\in \mathbb{N} \mid \sum_{i=1}^{n} f(i)\leq x\right\}
+			n_f(x)=\max\left\{n\in \mathbb{N} \mid \sum_{i=1}^{n} f(i)\leq x\right\}\label{def:n}
 		\end{equation}
 		that is, length of the largest interval.
 	\end{itemize}
@@ -144,7 +143,7 @@
 		\begin{equation}
 			x\sim \frac{n^{\alpha+1}L(n)}{\alpha+1}=\frac{nf(n)}{\alpha+1}
 		\end{equation}
-		for $\alpha>-1$. Note $n:=n_f(x)$.
+		for $\alpha>-1$. Note $n:=n_f(x)$ (see notation \ref{def:n}).
 	\end{lemma}
 	\begin{proof}
 		From Karamata's theorem (see proposition 1.5.8 in \cite{bingham1987regular} or Proposition~\ref{karamata} in the appendix)
@@ -177,12 +176,12 @@
 	
 	
 
-	\begin{lemma}\label{s asymp}
-		Let $\epsilon>0$ and $1-\epsilon\geq\lambda\geq\epsilon$, then $s_{\lambda n, f}(x)$ has the following asymptotic uniformly
-		\begin{equation}
-			s_{\lambda n, f}(x)\sim n\phi^{-1}\left(\lambda\right)
-		\end{equation}
-		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+	\begin{lemma}\label{l,k paramtrization}
+		Let $\epsilon>0$ and $1-\epsilon\geq\lambda\geq\epsilon$. Let $l=\phi^{-1}(\lambda)$ and $k=l+\lambda$, then uniformly in $\lambda$
+		\begin{align}
+			x\sim \sum_{i=n\phi^{-1}(\lambda)}^{n(\phi^{-1}(\lambda)+\lambda)} f(i)
+		\end{align}
+		where $l$ is unique and $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
 	\end{lemma}
 	
 	\begin{proof}
@@ -198,11 +197,11 @@
 		\begin{align}
 			1=(l+\lambda)^{\alpha+1}-l^{\alpha+1}<(\epsilon+\lambda)^{\alpha+1}-\epsilon^{\alpha+1}=1-\epsilon^{\alpha+1}<1
 		\end{align}
-		which is a clear contradiction.
+		which is a contradiction.
 		
 		Now $k$ and $l$ are in a compact subset of $(0,\infty)$, thus we can use the uniform convergence theorem (see Theorem 1.2.1 in \cite{bingham1987regular} or Theorem~\ref{UCT} in the Appendix). Using uniform convergence theorem and lemma~\ref{sum f Asymp}
 		\begin{align}
-			x\sim\frac{1}{\alpha+1}L(n)n^{\alpha+1}&= \\
+			x\sim\frac{1}{\alpha+1}L(n)n^{\alpha+1}&= \label{eq:yap0}\\
 			\frac{1}{\alpha+1}L(n)n^{\alpha+1}(k^{\alpha+1}-l^{\alpha+1})&=\label{eq:yap1}\\
 			L(n)\int_{nl}^{nk} t^\alpha dt&\sim\\
 			L(n)\sum_{i=nl}^{nk} i^\alpha&=\\
@@ -217,17 +216,28 @@
 			k^{\alpha+1}-l^{\alpha+1}&= 1\\
 			k-l&= (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
 			\lambda&= (1+l^{\alpha+1})^{\frac{1}{\alpha+1}}-l\\
-			ln&= n\phi^{-1}(\lambda).\label{ln eq}
+			l&=\phi^{-1}(\lambda)
 		\end{align}
-		Lemma \ref{phi integral} proves that $\phi^{-1}$ is well defined. Since $s_{\lambda n, f}(x)$ counts the number of intervals of length $\lambda n$, we get from equations~\ref{x sim nk-nl sum} and~\ref{ln eq}
+		In lemma~\ref{phi integral} it is proven that the inverse of $\phi$ is well defined. The $l$ is unique, because otherwise $k^{\alpha+1}-l^{\alpha+1}\neq 1$, thus same reasoning as \ref{eq:yap0} to \ref{eq:yap2} gives a contradiction.
+		
+	\end{proof}
+	
+	\begin{lemma}\label{s asymp}
+		Let $\epsilon>0$ and $1-\epsilon\geq\lambda\geq\epsilon$, then $s_{\lambda n, f}(x)$ has the following asymptotic uniformly
 		\begin{equation}
-			s_{\lambda n, f}(x) \sim nl = n\phi^{-1}(\lambda).
+			s_{\lambda n, f}(x)\sim n\phi^{-1}\left(\lambda\right)
 		\end{equation}
-		Though this assumes that the inversion from $x\sim \sum_{i=nl}^{nk} f(i)$ to $s_{\lambda n, f}(x) \sim nl$ is valid uniformly. Putting everything in terms of lambda we get that uniformly
-		\begin{align}
-			x\sim \sum_{i=n\phi^{-1}(\lambda)}^{n(\phi^{-1}(\lambda)+\lambda)} f(i)
-		\end{align}
-		Now if the convergence is not uniform there exists $\epsilon_0>0$ and for all $X_0>0$ such that there exists $x>X_0$ and $\lambda_x\in[\epsilon,1-\epsilon]$ such that 
+		where $\phi(x)=(1+x^{\alpha+1})^{\frac{1}{\alpha+1}}-x$.
+	\end{lemma}
+	
+	\begin{proof}
+		Since $s_{\lambda n, f}(x)$ counts the number of intervals of length $\lambda n$, we get from from lemma~\ref{l,k paramtrization}
+		\begin{equation}
+			s_{\lambda n, f}(x) \sim n\phi^{-1}(\lambda).
+		\end{equation}
+		
+		
+		We will prove uniformity of the asymptotic by contradiction. Assume that it is not uniform then there exists $\epsilon_0>0$ such that for all $X_0$ there exists $x>X_0$ and $\lambda_x\in[\epsilon,1-\epsilon]$ such that 
 		\begin{align}\label{uniformContradictory}
 			\abs{\frac{s_{\lambda_x n, f}(x)}{n\phi^{-1}(\lambda_x)}-1}>\epsilon_0
 		\end{align}
@@ -243,7 +253,7 @@
 		\end{align}
 		We know that 
 		\begin{align}
-			((\phi^{-1}(\lambda)(1+\epsilon_0)+\lambda)^{\alpha+1}-((\phi^{-1}(\lambda)(1+\epsilon_0))^{\alpha+1})=1+F(\lambda)
+			\left(\phi^{-1}(\lambda)(1+\epsilon_0)+\lambda\right)^{\alpha+1}-\left(\phi^{-1}(\lambda)(1+\epsilon_0)\right)^{\alpha+1}=1+F_+(\lambda)
 		\end{align}
 		for some continuous $F_+$ and that $F_+(\lambda)>0$, hence it has minimum $c>0$ in the compact $\lambda$-set. Thus independent $\lambda$ we get that
 		\begin{align}
@@ -263,7 +273,7 @@
 		\end{align}
 		We know that 
 		\begin{align}
-			((\phi^{-1}(\lambda)(1-\epsilon_0)+\lambda)^{\alpha+1}-((\phi^{-1}(\lambda)(1-\epsilon_0))^{\alpha+1})=1-F(\lambda)
+			\left(\phi^{-1}(\lambda)(1-\epsilon_0)+\lambda\right)^{\alpha+1}-\left(\phi^{-1}(\lambda)(1-\epsilon_0)\right)^{\alpha+1}=1-F(\lambda)
 		\end{align}
 		for some continuous $F_-$ and that $F_-(\lambda)>0$, hence it has minimum $c>0$ in the compact $\lambda$-set. Thus independent $\lambda$ we get that
 		\begin{align}
